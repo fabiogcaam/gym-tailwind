@@ -1,31 +1,21 @@
 import { Link } from "react-router-dom"
-
+import { PRICES } from "../../const/const"
 const Prices = () => {
 
-    const tarifas = [
-        {
-            name: "Classic",
-            price: 30,
-            plans: ["Maquinaria", "Piscina", "Entrenador personal"]
-        }, {
-            name: "Silver",
-            price: 60,
-            plans: ["Maquinaria", "Piscina", "Entrenador personal", "Actividades"]
-        },
-        {
-            name: "Gold",
-            price: 90,
-            plans: ["Maquinaria", "Piscina", "Entrenador personal", "Actividades", "Spa"]
-        }
-    ]
+    const colors = [
+        "bg-gradient-to-b from-black via-black to-white border border-black",
+        "bg-gradient-to-b from-blue-700 via-blue-700 to-white border border-blue-700",
+        "bg-gradient-to-b from-gold via-gold to-white border border-gold",
+    ];
 
     return (
 
-        <div className="Prices grid grid-flow-col gap-6 mx-10">
+        <div className="Prices grid grid-flow-col h-256 gap-6 items-center relative">
             {
-                tarifas.map(elm => {
+                PRICES.map((elm, index) => {
                     return (
-                        <div className="bg-black text-white text-center py-10 mx-16 rounded-xl">
+                        <div key={index}
+                            className={`${colors[index % colors.length]} text-white text-center py-10 mx-16 rounded-xl h-128 w-80 flex flex-col items-center justify-center relative hover:z-10 transition-all duration-300 ease-in-out transform hover:scale-110`}>
                             <h1 className="text-2xl mb-3">{elm.name}</h1>
                             <h2 className="text-4xl my-5">{elm.price}€</h2>
                             <ul>
@@ -36,7 +26,7 @@ const Prices = () => {
                                 })}
                             </ul>
                             <Link to="/login">
-                                <div className="bg-white text-black mt-5 py-2 text-xl w-3/6 mx-20 rounded-2xl text-center">Añadir</div>
+                                <div className="bg-white text-black mt-5 py-2 text-xl px-10 rounded-2xl text-center click:bg-grey-400  click:text-white">Añadir</div>
                             </Link>
                         </div>
                     )

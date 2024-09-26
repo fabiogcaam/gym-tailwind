@@ -1,0 +1,14 @@
+.perspective {
+    perspective: 1000px;
+    /* La distancia de perspectiva */
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+    /* Oculta la cara de atrás cuando se rota */
+}
+
+.rotate-y-180 {
+    transform: rotateY(180deg);
+    /* Rota 180 grados en el eje Y */
+}

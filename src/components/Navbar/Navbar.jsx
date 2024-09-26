@@ -6,6 +6,7 @@ const Navbar = () => {
         <div className="Navbar flex justify-between inset-0 absolute bg-blue-500 text-center h-20">
             <ul className="flex space-x-8 text-white ml-8">
                 <Link to="/"><li className="mt-7">Home</li></Link>
+                <Link to="/main"><li className="mt-7">Main</li></Link>
             </ul>
             <ul className='flex space-x-8 text-white mr-8'>
                 <Link to="/login"><li className='mt-7'>Login</li></Link>
