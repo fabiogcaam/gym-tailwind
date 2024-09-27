@@ -1,9 +1,23 @@
 const LoginForm = () => {
 
+    const [formInfo, setFormInfo] = useState({ email: "", password: "" })
+
+    const handleInputOnChange = (event) => {
+        const { value, name } = event.target
+        setFormInfo({ ...formInfo, [name]: value })
+    }
+
+    const handleInputOnSubmit = (event) => {
+        event.preventDefault()
+
+    }
 
     return (
 
-        <form className="mx-60 mt-60 mb-52">
+        <form
+            className="mx-60 mt-60 mb-52"
+            onSubmit={handleInputOnSubmit}
+        >
 
             <div className="mb-4">
                 <label className="block text-gray-700 font-medium mb-2" htmlFor="email">
@@ -15,7 +29,8 @@ const LoginForm = () => {
                     type="email"
                     name="email"
                     placeholder="johndoe@example.com"
-
+                    value={formInfo.email}
+                    onChange={handleInputOnChange}
                 />
             </div>
 
@@ -28,6 +43,8 @@ const LoginForm = () => {
                     id="password"
                     type="password"
                     name="password"
+                    value={formInfo.password}
+                    onChange={handleInputOnChange}
                 />
             </div>
             <button

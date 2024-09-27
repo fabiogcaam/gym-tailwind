@@ -7,12 +7,13 @@ const Clases = () => {
     return (
 
         <div className="my-20">
-            <h1 className="underline underline-offset-8 mb-10 text-center text-2xl">Actividades</h1>
+            <h1 className="underline underline-offset-8 mb-10 text-center text-2xl hover:decoration-blue-400">Actividades</h1>
             <div className="grid grid-cols-3 gap-6">
                 {
-                    CLASSES.map(elm => {
+                    CLASSES.map((elm, index) => {
+                        console.log(index)
                         return (
-                            <div key={elm.name} className="card mx-5 my-5 rounded-md perspective">
+                            <div key={index} className={`card mx-5 my-5 rounded-md perspective ${index === 6 && "col-start-2 flex justify-center items-center"}`}>
                                 <div className="relative w-full h-64 transition-transform duration-500 transform-style-3d hover:rotate-y-180">
                                     <div className="absolute backface-hidden w-full h-full">
                                         <figure>
