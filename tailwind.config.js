@@ -11,7 +11,8 @@ export default {
       },
       height: {
         '128': '32rem',
-        '256': '42rem'
+        '160': '42rem',
+        '256': '46rem'
       },
       perspective: {
         '1000': '1000px', // Define perspectiva

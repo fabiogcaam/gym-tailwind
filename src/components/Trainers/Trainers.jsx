@@ -14,6 +14,12 @@ const Trainers = () => {
         setCurrentIndex((prevIndex) => prevIndex === 0 ? TRAINERS.length - 1 : prevIndex - 1)
     }
 
+    const visibleTrainers = [
+        TRAINERS[currentIndex % TRAINERS.length],
+        TRAINERS[(currentIndex + 1) % TRAINERS.length],
+        TRAINERS[(currentIndex + 2) % TRAINERS.length],
+    ]
+
     return (
         <div className="Trainers my-20">
             <h1 className="text-2xl mb-10 text-center underline underline-offset-8 hover:decoration-blue-400">Entrenadores</h1>
@@ -21,9 +27,9 @@ const Trainers = () => {
                 <button onClick={handlePrev} className="bg-gold p-2 rounded ml-5 mr-5 h-10">Prev</button>
                 <div className="grid grid-col-3 grid-flow-col gap-6 mt-10">
                     {
-                        TRAINERS.slice(currentIndex, currentIndex + trainersToShow).map(elm => {
+                        visibleTrainers.map((elm, index) => {
                             return (
-                                <div className="card border-solid border-2 mx-5 rounded-md">
+                                <div key={index} className="card border-solid border-2 mx-5 rounded-md">
                                     <div className="card-head">
                                         <figure>
                                             <img src={elm.image} alt={elm.name} />
