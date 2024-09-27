@@ -19,8 +19,9 @@ const SignUpForm = () => {
 
     return (
 
-        <div className="SignUpForm mx-60 mt-36 mb-32">
+        <div className="mx-60 mt-36 mb-32">
             <form onSubmit={handleInputOnSubmit}>
+                <h1 className="font-bold text-2xl my-16">Sign Up</h1>
                 <div className="mb-5">
                     <label
                         className="block text-gray-700 font-medium mb-2">
@@ -77,10 +78,12 @@ const SignUpForm = () => {
                     />
                 </div>
 
-                <input
-                    className="mt-4 bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit"
-                    value="Sign Up" />
+                <div className="flex justify-center my-5">
+                    <input
+                        className="mt-4 bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit"
+                        value="Sign Up" />
+                </div>
             </form>
         </div>
     )

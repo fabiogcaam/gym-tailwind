@@ -73,97 +73,47 @@ const PRICES = [
 const ACTIVITIES = [{
     id: 1,
     name: "Boxeo",
-    hours: ["9:00", "12:00", "17:00"],
+    hours: ["9:00-10:00", "12:00-13:00", "17:00-18:00"],
     trainer: "Julio",
     plazas: 25
 }, {
     id: 2,
-    name: "Boxeo",
-    hours: "12:00",
-    trainer: "Julio",
+    name: "Kick Boxing",
+    hours: ["10:00-11:00", "13:00-14:00", "18:00-19:00"],
+    trainer: "Pablo",
     plazas: 25
-}, {
+},
+{
     id: 3,
-    name: "Boxeo",
-    hours: "17:00",
-    trainer: "Julio",
-    plazas: 25
+    name: "BBJ",
+    hours: ["9:00-10:00", "11:00-12:00"],
+    trainer: "Alberto",
+    plazas: 20
 },
 {
     id: 4,
-    name: "Kick Boxing",
-    hours: "10:00",
-    trainer: "Pablo",
-    plazas: 25
+    name: "Taekwondo",
+    hours: ["10:00-11:00", "12:00-13:00"],
+    trainer: "Mónica",
+    plazas: 20
 },
 {
     id: 5,
-    name: "Kick Boxing",
-    hours: "13:00",
-    trainer: "Pablo",
-    plazas: 25
-},
-{
+    name: "Pilates",
+    hours: ["18:00-19:00"],
+    trainer: "Alba",
+    plazas: 30
+}, {
     id: 6,
-    name: "Kick Boxing",
-    hours: "18:00",
-    trainer: "Pablo",
-    plazas: 25
+    name: "Yoga",
+    hours: ["13:00-14:00", "17:00-18:00"],
+    trainer: "David",
+    plazas: 30
 },
 {
     id: 7,
-    name: "BBJ",
-    hours: "9:00",
-    trainer: "Alberto",
-    plazas: 20
-},
-{
-    id: 8,
-    name: "BBJ",
-    hours: "11:00",
-    trainer: "Alberto",
-    plazas: 20
-},
-{
-    id: 9,
-    name: "Taekwondo",
-    hours: "10:00",
-    trainer: "Mónica",
-    plazas: 20
-}, {
-    id: 10,
-    name: "Pilates",
-    hours: "12:00",
-    trainer: "Alba",
-    plazas: 30
-}, {
-    id: 11,
-    name: "Pilates",
-    hours: "18:00",
-    trainer: "Alba",
-    plazas: 30
-}, {
-    id: 12,
-    name: "Yoga",
-    hours: ["13:00", "17:00"],
-    trainer: "David",
-    plazas: 30
-}, {
-    id: 13,
-    name: "Yoga",
-    hours: "17:00",
-    trainer: "David",
-    plazas: 30
-}, {
-    id: 14,
     name: "Spinning",
-    hours: "13:00",
-    trainer: "Juan",
-    plazas: 15
-}, {
-    id: 15,
-    name: "Spinning",
-    hours: "17:00",
+    hours: ["13:00-14:00", "17:00-18:00"],
     trainer: "Juan",
     plazas: 15
 }]

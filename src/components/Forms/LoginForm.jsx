@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 const LoginForm = () => {
 
     const [formInfo, setFormInfo] = useState({ email: "", password: "" })
@@ -10,15 +12,17 @@ const LoginForm = () => {
     const handleInputOnSubmit = (event) => {
         event.preventDefault()
 
+        //Añadir a la base de datos los valores del form
+        //Tengo que crear los Services para comunicar con la bbddd
     }
 
     return (
 
         <form
-            className="mx-60 mt-60 mb-52"
+            className="mx-60 my-44"
             onSubmit={handleInputOnSubmit}
         >
-
+            <h1 className="text-2xl font-bold mb-16">Login</h1>
             <div className="mb-4">
                 <label className="block text-gray-700 font-medium mb-2" htmlFor="email">
                     Correo Electrónico
@@ -47,12 +51,14 @@ const LoginForm = () => {
                     onChange={handleInputOnChange}
                 />
             </div>
-            <button
-                className="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="submit"
-            >
-                Enviar
-            </button>
+            <div className="flex justify-center items-center mt-4">
+                <button
+                    className="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit"
+                >
+                    Enviar
+                </button>
+            </div>
         </form >
     )
 
