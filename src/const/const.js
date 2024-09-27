@@ -209,6 +209,11 @@ const IMAGES = ["https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ix
     "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
     "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"]
 
+const COLORS = [
+    "bg-gradient-to-b from-black via-black to-white border border-black",
+    "bg-gradient-to-b from-blue-700 via-blue-700 to-white border border-blue-700",
+    "bg-gradient-to-b from-gold via-gold to-white border border-gold",
+]
 
 
 export {
@@ -216,5 +221,6 @@ export {
     PRICES,
     ACTIVITIES,
     CLASSES,
-    IMAGES
+    IMAGES,
+    COLORS
 }
