@@ -1,31 +1,22 @@
-import { Button } from "@material-tailwind/react"
+/* eslint-disable react/jsx-key */
+/* eslint-disable no-unused-vars */
 import { useState } from "react"
-import { ACTIVITIES } from "../../const/const"
+import { CLASSES } from "../../const/const"
 
 const BookingActivity = () => {
 
-    const [active, setActive] = useState(false)
     const [bookings, setBookings] = useState([])
-    const [clase, setClase] = useState([])
 
     const addBooking = (id) => {
-        ACTIVITIES.filter(elm => {
+        CLASSES.filter(elm => {
             if (elm.id == id) {
                 setBookings({ ...bookings, elm })
             }
         })
-        setActive(true)
     }
 
     const deleteBooking = (id) => {
-        setBookings(elm => {
-            elm.filter(elm => {
-                if (elm.id != id) {
-                    setBookings(elm)
-                }
-            })
-        })
-        setActive(false)
+        setBookings(bookings.filter(elm => elm !== id))
     }
 
     return (
@@ -52,7 +43,7 @@ const BookingActivity = () => {
                     </thead>
                     <tbody>
                         {
-                            ACTIVITIES.map(elm => {
+                            CLASSES.map(elm => {
                                 return (
 
                                     <tr className="my-10">
@@ -75,7 +66,12 @@ const BookingActivity = () => {
                                             {elm.plazas}
                                         </td>
                                         <td>
-                                            <button className="bg-green-500 p-1 ml-2 rounded text-white" onClick={() => addBooking(elm.id)}>Reservar</button>
+                                            {
+                                                !bookings.includes(elm.id) ?
+                                                    <button key={elm.id} className="bg-green-500 p-1 ml-2 rounded text-white" onClick={() => addBooking(elm.id)}>Reservar</button>
+                                                    :
+                                                    <button key={elm.id} className="bg-red-500 p-1 ml-2 rounded text-white" onClick={() => deleteBooking(elm.id)}>Cancelar</button>
+                                            }
                                         </td>
                                     </tr>
 

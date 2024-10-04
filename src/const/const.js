@@ -70,7 +70,7 @@ const PRICES = [
     }
 ]
 
-const ACTIVITIES = [{
+const CLASSES = [{
     id: 1,
     name: "Boxeo",
     hours: ["9:00-10:00", "12:00-13:00", "17:00-18:00"],
@@ -118,7 +118,7 @@ const ACTIVITIES = [{
     plazas: 15
 }]
 
-const CLASSES = [{
+const ACTIVITIES = [{
     name: "BBJ",
     description: "Arte marcial enfocado en la lucha cuerpo a cuerpo en el que se busca la sumisión del oponente.",
     imageURL: bbj
