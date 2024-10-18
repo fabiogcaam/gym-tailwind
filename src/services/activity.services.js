@@ -27,7 +27,7 @@ class ActivityService {
     }
 
     deleteActivity(idActivity) {
-        return this.api.post('delete', idActivity)
+        return this.api.post(`${idActivity}/delete`, idActivity)
     }
 
 }
