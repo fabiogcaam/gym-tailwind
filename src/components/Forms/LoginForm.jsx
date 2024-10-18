@@ -1,26 +1,40 @@
-import { useState } from "react"
+import { useState, createContext, useNavigate } from "react"
+import { AuthContext } from "./../../context/auth.context"
+import authService from "../../services/auth.services"
+import AlertForm from "../../components/Forms/AlertForm"
 
 const LoginForm = () => {
 
     const [formInfo, setFormInfo] = useState({ email: "", password: "" })
+    const [errors, setErrors] = useState([])
+
+    const { authUser } = createContext(AuthContext)
+
+    const navigate = useNavigate()
 
     const handleInputOnChange = (event) => {
         const { value, name } = event.target
         setFormInfo({ ...formInfo, [name]: value })
     }
 
-    const handleInputOnSubmit = (event) => {
+    const handleLoginOnSubmit = (event) => {
         event.preventDefault()
 
-        //Añadir a la base de datos los valores del form
-        //Tengo que crear los Services para comunicar con la bbddd
+        authService
+            .login(formInfo)
+            .then(({ data }) => {
+                localStorage.setItem(data.authToken)
+                authUser()
+                navigate('/main')
+            })
+            .catch(err => setErrors(err.response.data.errorMessage))
     }
 
     return (
 
         <form
             className="mx-60 my-44"
-            onSubmit={handleInputOnSubmit}
+            onSubmit={handleLoginOnSubmit}
         >
             <h1 className="text-2xl font-bold mb-16">Login</h1>
             <div className="mb-4">
@@ -51,12 +65,17 @@ const LoginForm = () => {
                     onChange={handleInputOnChange}
                 />
             </div>
+
+            {
+                errors && errors.map(e => <AlertForm key={e} message={e} />)
+            }
+
             <div className="flex justify-center items-center mt-4">
                 <button
                     className="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
                 >
-                    Enviar
+                    Iniciar Sesión
                 </button>
             </div>
         </form >

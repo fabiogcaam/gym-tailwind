@@ -1,8 +1,13 @@
-import { useState } from "react"
+import { useState, useNavigate } from "react"
+import authService from "../../services/auth.services"
+import AlertForm from "./../Forms/AlertForm"
 
 const SignUpForm = () => {
 
     const [infoForm, setInfoForm] = useState({ name: "", email: "", password: "", rPassword: "" })
+    const [errors, setErrors] = useState([])
+
+    const navigate = useNavigate()
 
     const handleInputOnChange = (event) => {
         const { value, name } = event.target
@@ -13,8 +18,10 @@ const SignUpForm = () => {
     const handleInputOnSubmit = (event) => {
         event.preventDefault()
 
-        //Añadir a la base de datos los datos que obtuvimos del infoForm 
-        //Falta crear los services para añadir los datos
+        authService
+            .signup(infoForm)
+            .then(() => navigate('/main'))
+            .catch(err => setErrors(err.response.data.errorMessage))
     }
 
     return (
@@ -77,6 +84,8 @@ const SignUpForm = () => {
                         onChange={handleInputOnChange}
                     />
                 </div>
+
+                {errors.length > 0 && errors.map(e => <AlertForm key={e} message={e} />)}
 
                 <div className="flex justify-center my-5">
                     <input
