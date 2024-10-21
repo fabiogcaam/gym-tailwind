@@ -1,6 +1,7 @@
-import { useState, useNavigate } from "react"
+import { useState } from "react"
 import authService from "../../services/auth.services"
 import AlertForm from "./../Forms/AlertForm"
+import { useNavigate } from "react-router-dom"
 
 const SignUpForm = () => {
 

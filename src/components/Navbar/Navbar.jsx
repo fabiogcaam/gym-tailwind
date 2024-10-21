@@ -18,7 +18,9 @@ const Navbar = () => {
                 <Link to="/"><li className="mt-7">Home</li></Link>
                 {
                     loggedUser &&
-                    <Link to="/main"><li className="mt-7">Main</li></Link>
+                    <>
+                        <Link to="/main"><li className="mt-7">Main</li></Link>
+                    </>
                 }
             </ul>
             <ul className='flex space-x-8 text-white mr-8'>
