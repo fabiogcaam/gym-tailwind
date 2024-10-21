@@ -1,5 +1,4 @@
 import { ACTIVITIES } from "../../const/const"
-import Clase from "./Clases"
 
 const Clases = () => {
 

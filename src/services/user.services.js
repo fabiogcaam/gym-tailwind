@@ -19,7 +19,7 @@ class UserService {
     }
 
     bookingList() {
-        return this.api.get('/bookings')
+        return this.api.get('/:id/bookings')
     }
 
     deleteBooking(bookingId) {
