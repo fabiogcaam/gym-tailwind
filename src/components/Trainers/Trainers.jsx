@@ -1,16 +1,18 @@
 //import { TRAINERS } from "../../const/const"
 import { useState, useEffect } from "react"
 import trainerService from "../../services/trainer.services"
+import TrainerElement from "./TrainerElement"
 
 const Trainers = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0)
     const [trainers, setTrainers] = useState(null)
     const [visibleTrainers, setVisibleTrainers] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         getTrainerList()
-    }, [trainers])
+    }, [isLoading, currentIndex])
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % trainers.length)
@@ -21,19 +23,22 @@ const Trainers = () => {
     }
 
 
-
-
-
     function getTrainerList() {
 
         trainerService
             .getTrainers()
-            .then(({ data }) => setTrainers(data))
-            .then(() => setVisibleTrainers([
-                trainers[currentIndex % trainers.length],
-                trainers[(currentIndex + 1) % trainers.length],
-                trainers[(currentIndex + 2) % trainers.length],
-            ]))
+            .then(({ data }) => {
+                console.log(data)
+                setIsLoading(false)
+                setTrainers(data)
+            })
+            .then(() => {
+                setVisibleTrainers([
+                    trainers[currentIndex % trainers.length],
+                    trainers[(currentIndex + 1) % trainers.length],
+                    trainers[(currentIndex + 2) % trainers.length],
+                ])
+            })
             .catch(err => console.log(err))
     }
 
@@ -50,18 +55,7 @@ const Trainers = () => {
                                 visibleTrainers ?
                                     visibleTrainers.map((elm, index) => {
                                         return (
-                                            <div key={index} className="card border-solid border-2 mx-5 rounded-md">
-                                                <div className="card-head">
-                                                    <figure>
-                                                        <img src={elm.image} alt={elm.name} />
-                                                    </figure>
-                                                </div>
-                                                <div className="card-body text-center">
-                                                    <h3 className="text-xl">{elm.name}, {elm.age}</h3>
-                                                    <h5 className="my-2">Clase de {elm.class}</h5>
-                                                    <p className="my-3">{elm.description}</p>
-                                                </div>
-                                            </div>
+                                            <TrainerElement key={index} name={elm.name} activity={elm.activity.name} age={elm.age} description={elm.description} imageUrl={elm.imageUrl} />
                                         )
                                     })
                                     :
