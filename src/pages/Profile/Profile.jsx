@@ -11,7 +11,7 @@ const Profile = () => {
         <div className="mt-48 flex justify-center">
             <ul className="text-center">
                 <Link to={`/${_id}/editProfile`}><li className="my-3 font-medium text-xl">Editar perfil</li></Link>
-                <Link to={`/${_id}/bookings`}><li className="my-3 font-medium text-xl">Ver mis Reservas</li></Link>
+                <Link to={`/${_id}/bookings`}><li className="my-3 font-medium text-xl">Mis Reservas</li></Link>
             </ul>
         </div>
     )

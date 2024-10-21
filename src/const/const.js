@@ -11,46 +11,46 @@ const TRAINERS = [{
     age: 23,
     class: "yoga",
     description: "Llevo muchos años de experiencia entrenando a yoga, a personas de todas las edades",
-    image: "../assets/yoga.webp"
+    imageUrl: "../assets/yoga.webp"
 }, {
     name: "Julio",
     age: 34,
     class: "boxeo",
     description: "Llevo muchos años de experiencia entrenando boxeo, he sido campeón de Madrid amateur",
-    image: "../assets/imagen-boxeo.webp"
+    imageUrl: "../assets/imagen-boxeo.webp"
 }, {
     name: "Alberto",
     age: 26,
     class: "bbj",
     description: "Cinturón azul de brazilian jujitsu, llevo desde los doce años prácticando este apasionante deporte y me encanta compartirlo y disfrutarlo cada día con más gente",
-    image: "../assets/bbj.webp"
+    imageUrl: "../assets/bbj.webp"
 },
 {
     name: "Mónica",
     age: 31,
     class: "Taekwondo",
     description: "Subcampeona de España y cinturón negro, aprendamos a patadas ;)",
-    image: "../assets/taekwondo.webp"
+    imageUrl: "../assets/taekwondo.webp"
 },
 {
     name: "Juan",
     age: 25,
     class: "spinning",
     description: "Dando clases de spinning desde hace 1 año, pero me he enamorado del deporte y del ambiente",
-    image: ""
+    imageUrl: ""
 },
 {
     name: "Pablo",
     age: 27,
     class: "kick boxing",
     description: "Profesional del kick boxing con 8 años de experiencia enseñando.",
-    image: "../assets/kickboxing.webp"
+    imageUrl: "../assets/kickboxing.webp"
 }, {
     name: "Alba",
     age: 24,
     class: "pilates",
     description: "Ven a cansarte de una forma entretenida y elástica conmigo.",
-    image: "../assets/pilates.webp"
+    imageUrl: "../assets/pilates.webp"
 }]
 
 const PRICES = [
