@@ -1,6 +1,7 @@
 import ReactCalendar from 'react-calendar'
 import { useState } from 'react'
 import classService from '../../services/class.services'
+import ClaseDia from '../Clases/ClaseDia'
 
 
 const Calendar = () => {
@@ -10,12 +11,12 @@ const Calendar = () => {
 
     function handleDateChange(newDate) {
         setDate(newDate)
-        getClassesAtDay(newDate)
+        getClassesAtDay()
     }
 
-    function getClassesAtDay(selectedDate) {
+    function getClassesAtDay() {
 
-        const dayOfWeek = selectedDate.toLocaleString('en-US', { weekday: 'long' })
+        const dayOfWeek = date.toLocaleString('en-US', { weekday: 'long' })
 
         classService
             .getClassesByDay(dayOfWeek)
@@ -34,6 +35,16 @@ const Calendar = () => {
                 className="react-view"
                 view='month'
                 onClickDay={(date) => handleDateChange(date)} />
+
+            <div>
+                {
+                    classes.map(elm => {
+                        return (
+                            <ClaseDia key={elm._id} activity={elm.activity} trainer={elm.trainer} schedule={elm.schedule} numParticipants={elm.numParticipants} participants={elm.participants} />
+                        )
+                    })
+                }
+            </div>
 
         </div>
     )
