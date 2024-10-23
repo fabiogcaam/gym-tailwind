@@ -1,4 +1,4 @@
-import { useState, createContext } from "react"
+import { useState, useContext } from "react"
 import { AuthContext } from "./../../context/auth.context"
 import authService from "../../services/auth.services"
 import AlertForm from "../../components/Forms/AlertForm"
@@ -9,7 +9,7 @@ const LoginForm = () => {
     const [formInfo, setFormInfo] = useState({ email: "", password: "" })
     const [errors, setErrors] = useState([])
 
-    const { authUser } = createContext(AuthContext)
+    const { authUser } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -24,7 +24,8 @@ const LoginForm = () => {
         authService
             .login(formInfo)
             .then(({ data }) => {
-                localStorage.setItem(data.authToken)
+                localStorage.setItem('authToken', data.authToken)
+                console.log("Holaaaa", data)
                 authUser()
                 navigate('/main')
             })

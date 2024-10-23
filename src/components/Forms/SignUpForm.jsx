@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 const SignUpForm = () => {
 
-    const [infoForm, setInfoForm] = useState({ name: "", email: "", password: "", rPassword: "" })
+    const [infoForm, setInfoForm] = useState({ name: "", email: "", password: "" })
     const [errors, setErrors] = useState([])
 
     const navigate = useNavigate()
@@ -68,20 +68,6 @@ const SignUpForm = () => {
                         type="password"
                         name="password"
                         value={infoForm.password}
-                        onChange={handleInputOnChange}
-                    />
-                </div>
-                <div>
-                    <label
-                        className="block text-gray-700 font-medium mb-2">
-                        Repite la Contraseña:
-                    </label>
-                    <input
-                        className="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-indigo-500"
-                        id="rpt_pswd"
-                        type="password"
-                        name="rpt_pswd"
-                        value={infoForm.rPassword}
                         onChange={handleInputOnChange}
                     />
                 </div>

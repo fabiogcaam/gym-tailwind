@@ -1,4 +1,3 @@
-//import { TRAINERS } from "../../const/const"
 import { useState, useEffect } from "react"
 import trainerService from "../../services/trainer.services"
 import TrainerElement from "./TrainerElement"
