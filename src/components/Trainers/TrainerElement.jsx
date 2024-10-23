@@ -2,7 +2,7 @@
 const TrainerElement = ({ name, age, description, activity, imageUrl }) => {
 
     return (
-        <div className="card border-solid border-2 mx-5 rounded-md">
+        <div className="card border-solid border-violet border-2 mx-5 rounded-md">
             <div className="card-head">
                 <figure>
                     <img src={imageUrl} alt={name} />

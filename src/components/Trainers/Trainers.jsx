@@ -43,12 +43,12 @@ const Trainers = () => {
 
     return (
         <div className="Trainers my-20">
-            <h1 className="text-2xl mb-10 text-center underline underline-offset-8 hover:decoration-blue-400">Entrenadores</h1>
+            <h1 className="text-2xl mb-10 text-center underline underline-offset-8 hover:decoration-violet">Entrenadores</h1>
             {
                 trainers ?
                     <div className="flex justify-between mb-4 items-center">
 
-                        <button onClick={handlePrev} className="bg-gold p-2 rounded ml-5 mr-5 h-10">Prev</button>
+                        <button onClick={handlePrev} className="bg-gold text-violet p-2 rounded ml-5 mr-5 h-10">Prev</button>
                         <div className="grid grid-col-3 grid-flow-col gap-6 mt-10">
                             {
                                 visibleTrainers ?
@@ -62,7 +62,7 @@ const Trainers = () => {
                             }
 
                         </div>
-                        <button onClick={handleNext} className="bg-gold p-2 rounded mr-5 h-10">Next</button>
+                        <button onClick={handleNext} className="bg-gold text-violet p-2 rounded mr-5 h-10">Next</button>
                     </div>
                     :
                     <p>Esperando a obtener datos</p>

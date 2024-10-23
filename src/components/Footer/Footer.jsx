@@ -1,7 +1,7 @@
 const Footer = () => {
 
     return (
-        <footer className="bg-black text-white bottom-0">
+        <footer className="bg-violet text-white bottom-0">
             <div className="flex justify-evenly">
                 <ul className="my-4">
                     <li className="my-3 font-bold text-gold">Contactos</li>

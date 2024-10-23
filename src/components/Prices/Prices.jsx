@@ -14,14 +14,14 @@ const Prices = () => {
                             <h1 className="text-2xl mb-3">{elm.name}</h1>
                             <h2 className="text-4xl my-5">{elm.price}€</h2>
                             <ul>
-                                {elm.plans.map(elm => {
+                                {elm.plans.map((elm, index) => {
                                     return (
-                                        <li className="mt-2">{elm}</li>
+                                        <li key={index} className="mt-2">{elm}</li>
                                     )
                                 })}
                             </ul>
                             <Link to="/login">
-                                <div className="bg-white text-black mt-5 py-2 text-xl px-10 rounded-2xl text-center click:bg-grey-400  click:text-white">Añadir</div>
+                                <div className="bg-white text-black mt-5 py-2 text-xl px-10 rounded-2xl text-center click:bg-grey-400 click:text-white">Añadir</div>
                             </Link>
                         </div>
                     )

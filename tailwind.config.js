@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        gold: '#FFD700'
+        gold: '#FFD700',
+        violet: '#4f46e5'
       },
       height: {
         '128': '32rem',

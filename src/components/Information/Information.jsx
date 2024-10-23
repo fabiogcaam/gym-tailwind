@@ -8,7 +8,7 @@ const Information = () => {
 
     return (
         <div className="Information my-16">
-            <h1 className="text-2xl mx-48 text-center underline underline-offset-8 hover:decoration-blue-400">Información Práctica</h1>
+            <h1 className="text-2xl mx-48 text-center underline underline-offset-8 hover:decoration-violet">Información Práctica</h1>
             <div className="grid grid-rows-2 grid-flow-col gap-16 mt-10 mx-14">
                 <div className="mx-6 hover:border-solid rounded-2 my-5">
                     <h1 className="text-7xl">
