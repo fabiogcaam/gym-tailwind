@@ -1,5 +1,5 @@
 import ReactCalendar from 'react-calendar'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import classService from '../../services/class.services'
 import ClaseDia from '../Clases/ClaseDia'
 
@@ -8,6 +8,10 @@ const Calendar = () => {
 
     const [date, setDate] = useState(new Date())
     const [classes, setClasses] = useState([])
+
+    useEffect(() => {
+        handleDateChange(date)
+    }, [classes])
 
     function handleDateChange(newDate) {
         setDate(newDate)
