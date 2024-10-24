@@ -18,12 +18,13 @@ class ClassService {
         })
     }
 
-    getClassesByDay({ day }) {
-        return this.api.get('/day', day)
+    getClassesByDay(day) {
+        console.log("Esto es el service", day)
+        return this.api.get(`/${day}/day`)
     }
 
-    addClass({ activityId, trainerId, schedule, participants, numParticipants }) {
-        return this.api.post('/add', { activityId, trainerId, schedule, participants, numParticipants })
+    addClass(activityId, trainerId, schedule, participants, numParticipants) {
+        return this.api.post('/add', activityId, trainerId, schedule, participants, numParticipants)
     }
 
     deleteClass(id) {

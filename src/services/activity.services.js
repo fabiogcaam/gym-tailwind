@@ -4,7 +4,7 @@ class ActivityService {
 
     constructor() {
         this.api = axios.create({
-            baseURL: `${import.meta.env.VITE_APP_API_URL}/trips`
+            baseURL: `${import.meta.env.VITE_APP_API_URL}/activities`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -27,7 +27,12 @@ class ActivityService {
     }
 
     deleteActivity(idActivity) {
-        return this.api.post(`${idActivity}/delete`, idActivity)
+        return this.api.post(`${idActivity}/delete`)
+    }
+
+    getActivity(activity) {
+        console.log("Esto es el service del activity", activity)
+        return this.api.get(`/getById/${activity}`)
     }
 
 }

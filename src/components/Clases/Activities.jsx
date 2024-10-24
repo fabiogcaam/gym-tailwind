@@ -1,6 +1,6 @@
 import { ACTIVITIES } from "../../const/const"
 
-const Clases = () => {
+const Activities = () => {
 
 
     return (
@@ -34,4 +34,4 @@ const Clases = () => {
 
 }
 
-export default Clases
+export default Activities

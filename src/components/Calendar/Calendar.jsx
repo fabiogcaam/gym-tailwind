@@ -11,20 +11,26 @@ const Calendar = () => {
 
     useEffect(() => {
         handleDateChange(date)
-    }, [classes])
+    }, [date])
 
     function handleDateChange(newDate) {
         setDate(newDate)
+        console.log(date)
         getClassesAtDay()
     }
 
     function getClassesAtDay() {
 
-        const dayOfWeek = date.toLocaleString('en-US', { weekday: 'long' })
+        const day = date.toLocaleString('en-US', { weekday: 'long' })
+
+        console.log("eestoy aqui", day)
 
         classService
-            .getClassesByDay(dayOfWeek)
-            .then(({ data }) => setClasses(data))
+            .getClassesByDay(day)
+            .then(({ data }) => {
+                console.log("Esto deberia ser los datos de la bbdd", data)
+                setClasses(data)
+            })
             .catch(err => console.log(err))
 
     }
