@@ -22,11 +22,13 @@ const ClaseDia = ({ trainer, schedule, numParticipants, participants }) => {
     }
 
     return (
-        <div>
-            <h2>Clase de {activity}</h2>
-            <h3>Entrenador {trainer.name}</h3>
-            <h4>Esta clase es de {schedule.time}</h4>
-            <h5>Numero máximo de participantes es de {numParticipants} y quedan {numParticipants - participants.length} plazas libres</h5>
+        <div className="bg-gray-100 border-violet border rounded-xl mt-5 px-5 py-5 w-[500px]">
+            <h2 className="">Clase de {activity} con {trainer.name}</h2>
+            <h4>Horario: {schedule.time}</h4>
+            <h5>Sitios {numParticipants - participants.length}/{numParticipants} libres</h5>
+            <div className="flex justify-end">
+                <button className={numParticipants - participants.length ? "bg-violet px-2 py-1 text-white rounded" : "invisible"}>{numParticipants - participants.length ? "Reservar" : "Lleno"}</button>
+            </div>
         </div>
     )
 
