@@ -1,14 +1,15 @@
 import activityService from "../../services/activity.services"
+import bookingService from "../../services/booking.services"
 import { useState, useEffect } from "react"
 
 /* eslint-disable react/prop-types */
-const ClaseDia = ({ trainer, schedule, numParticipants, participants }) => {
+const ClaseDia = ({ id, trainer, schedule, numParticipants, participants }) => {
 
     const [activity, setActivity] = useState('')
 
     useEffect(() => {
         getActivityName()
-    }, [trainer.activity])
+    }, [trainer])
 
     function getActivityName() {
         console.log(trainer.activity)
@@ -21,13 +22,27 @@ const ClaseDia = ({ trainer, schedule, numParticipants, participants }) => {
             .catch(err => console.log(err))
     }
 
+    function addToBookings() {
+        bookingService
+            .createBooking(id)
+            .then(() => console.log("Añadido a tus reservas"))
+            .catch(err => console.log(err))
+    }
+
+    function cancelBooking() {
+        bookingService
+            .deleteBooking()
+            .then(() => console.log("Reserva eleminada"))
+            .catch(err => console.log(err))
+    }
+
     return (
         <div className="bg-gray-100 border-violet border rounded-xl mt-5 px-5 py-5 w-[500px]">
             <h2 className="">Clase de {activity} con {trainer.name}</h2>
             <h4>Horario: {schedule.time}</h4>
             <h5>Sitios {numParticipants - participants.length}/{numParticipants} libres</h5>
             <div className="flex justify-end">
-                <button className={numParticipants - participants.length ? "bg-violet px-2 py-1 text-white rounded" : "invisible"}>{numParticipants - participants.length ? "Reservar" : "Lleno"}</button>
+                <button onClick={numParticipants - participants.length ? addToBookings() : cancelBooking()} className={numParticipants - participants.length ? "bg-violet px-2 py-1 text-white rounded" : "invisible"}>{numParticipants - participants.length ? "Reservar" : "Lleno"}</button>
             </div>
         </div>
     )

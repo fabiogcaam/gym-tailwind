@@ -50,7 +50,7 @@ const Calendar = () => {
                 {
                     classes.map(elm => {
                         return (
-                            <ClaseDia key={elm._id} activity={elm.activity} trainer={elm.trainer} schedule={elm.schedule} numParticipants={elm.numParticipants} participants={elm.participants} />
+                            <ClaseDia key={elm._id} id={elm._id} activity={elm.activity} trainer={elm.trainer} schedule={elm.schedule} numParticipants={elm.numParticipants} participants={elm.participants} />
                         )
                     })
                 }

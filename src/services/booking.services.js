@@ -26,6 +26,10 @@ class BookingServices {
         this.api.post('/finished', bookingId)
     }
 
+    deleteBooking(classId) {
+        this.api.post(`/${classId}/delete`)
+    }
+
 }
 
 const bookingServices = new BookingServices()
