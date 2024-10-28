@@ -18,16 +18,17 @@ class BookingServices {
         })
     }
 
-    createBooking(classId) {
-        this.api.post('/create', classId)
+    createBooking({ classId, bookingDate }) {
+        console.log("ENTRA EN EL SERVICE", { classId, bookingDate })
+        return this.api.post(`/create`, { classId, bookingDate })
     }
 
     finishedBooking(bookingId) {
-        this.api.post('/finished', bookingId)
+        return this.api.post('/finished', bookingId)
     }
 
     deleteBooking(classId) {
-        this.api.post(`/${classId}/delete`)
+        return this.api.post(`/${classId}/delete`)
     }
 
 }
