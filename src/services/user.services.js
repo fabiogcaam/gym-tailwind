@@ -18,8 +18,9 @@ class UserService {
         })
     }
 
-    bookingList() {
-        return this.api.get('/:id/bookings')
+    bookingList(userId) {
+        console.log("LLEGAMOS AL SERVICE")
+        return this.api.get(`/${userId}/bookings`)
     }
 
     deleteBooking(bookingId) {

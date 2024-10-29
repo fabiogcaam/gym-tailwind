@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
-import { createContext } from "react"
+import { useContext } from "react"
 
 const Profile = () => {
 
-    const { loggedUser } = createContext(AuthContext)
-    const _id = loggedUser._id
+    const { loggedUser } = useContext(AuthContext)
+    const { _id: _id } = loggedUser
+    console.log(_id)
+
 
     return (
         <div className="mt-48 flex justify-center">

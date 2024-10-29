@@ -1,11 +1,41 @@
-const BookingElement = (clase, date, status) => {
+import { useEffect, useState } from "react"
+import classService from "../../services/class.services"
+
+/* eslint-disable react/prop-types */
+const BookingElement = ({ clase, status }) => {
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [classData, setClassData] = useState([])
+
+    useEffect(() => {
+        getClasses()
+    }, [isLoading])
+
+    function getClasses() {
+
+        console.log("ENTRO EN GETCLASSES")
+        console.log(clase)
+        classService.
+            getClass(clase)
+            .then(({ data }) => {
+                console.log(data)
+                setClassData(data)
+                setIsLoading(false)
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
-        <div>
-            <h3>Clase de {clase}</h3>
-            <p>A las {date}</p>
-            <h3 className={status == "Reserved" ? 'text-green-600' : 'text-red-700'}>{status == "Reserved" ? 'En reserva' : 'Finalizada'}</h3>
-        </div>
+        classData ?
+            <div className="bg-grey-100 border border-violet p-5 mt-5 w-3/6 rounded-xl">
+                <h3>Clase es el día {classData.schedule.day} de {classData.schedule.time}</h3>
+                <p>Con el profesor {classData.trainer.name}</p>
+                <div className="flex justify-end">
+                    <h3 className={status == "Reserved" ? 'text-green-600' : 'text-red-700'}>{status == "Reserved" ? 'En reserva' : 'Finalizada'}</h3>
+                </div>
+            </div>
+            :
+            <h2>Cargando</h2>
     )
 
 }

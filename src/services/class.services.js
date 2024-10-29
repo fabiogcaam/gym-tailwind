@@ -18,6 +18,14 @@ class ClassService {
         })
     }
 
+    getClassesList() {
+        return this.api.get('/')
+    }
+
+    getClass(clase) {
+        return this.api.get(`/${clase}`)
+    }
+
     getClassesByDay(day) {
         console.log("Esto es el service", day)
         return this.api.get(`/${day}/day`)
