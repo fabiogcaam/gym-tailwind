@@ -6,6 +6,7 @@ import Main from "./pages/Main/Main"
 import Profile from "./pages/Profile/Profile"
 import ProfileEdit from "./pages/ProfileEdit/ProfileEdit"
 import Bookings from "./pages/Bookings/Bookings"
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute"
 
 function App() {
   return (
@@ -14,10 +15,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/:id/profileEdit" element={<ProfileEdit />} />
-        <Route path="/:id/bookings" element={<Bookings />} />
+
+        <Route element={<PrivateRoute />}>
+          <Route path="/main" element={<Main />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/:id/profileEdit" element={<ProfileEdit />} />
+          <Route path="/:id/bookings" element={<Bookings />} />
+        </Route>
       </Routes>
     </div>
   )

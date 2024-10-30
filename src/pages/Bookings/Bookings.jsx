@@ -3,12 +3,14 @@ import userService from "./../../services/user.services"
 import BookingElement from "../../components/BookingElements/BookingElement"
 import { useParams } from "react-router-dom"
 
+
+
 const Bookings = () => {
 
     const [bookings, setBookings] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const { id } = useParams()
-    console.log("ESTE ES EL ID", id)
+
 
     useEffect(() => {
         getBookingsList()
@@ -16,17 +18,12 @@ const Bookings = () => {
 
     function getBookingsList() {
 
-
-        console.log("ENTRAMOS EN GET BOOKINGS")
-
         userService
             .bookingList(id)
             .then(({ data }) => {
                 console.log(data)
                 setBookings(data)
                 setIsLoading(false)
-                console.log("ESTO SON LOS BOOKINGS", bookings)
-                console.log(isLoading)
             })
             .catch(err => console.log(err))
     }
@@ -37,7 +34,6 @@ const Bookings = () => {
             {
                 bookings ?
                     bookings.map(elm => {
-                        console.log("HELO", elm)
                         return (
                             < BookingElement key={elm._id} clase={elm.class} status={elm.status} />
                         )
