@@ -28,7 +28,7 @@ const Navbar = () => {
                     loggedUser ?
                         <>
                             <Link to={`/profile`}><li className='mt-7'>Profile</li></Link>
-                            <Link onClick={closeSession}><li className='mt-7'>Logout</li></Link>
+                            <Link to={'/'} onClick={closeSession}><li className='mt-7'>Logout</li></Link>
                         </>
 
                         :
