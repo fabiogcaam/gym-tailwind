@@ -44,25 +44,41 @@ const ActivityForm = () => {
 
     return (
         <form onSubmit={handleActivitySubmit}>
-            <h1>Crear una actividad nueva</h1>
-            <div>
-                <label>Nombre de la actividad:</label>
-                <input type="text" placeholder="Introduce el nombre de la nueva actividad" name="name" value={activityData.name} onChange={handleInputOnChange} />
+            <h1 className="my-20 font-medium text-2xl">Crear una actividad nueva</h1>
+            <div className="flex flex-col my-3">
+                <label className="my-2">Nombre de la actividad:</label>
+                <input
+                    className="border border-violet rounded p-2"
+                    type="text"
+                    placeholder="Introduce el nombre de la nueva actividad"
+                    name="name"
+                    value={activityData.name}
+                    onChange={handleInputOnChange} />
             </div>
-            <div>
-                <label>Descripción de la actividad:</label>
-                <input type="text" placeholder="Introduce la descripción de la nueva actividad" name="description" value={activityData.description} onChange={handleInputOnChange} />
+            <div className="flex flex-col my-3">
+                <label className="my-2">Descripción de la actividad:</label>
+                <input
+                    className="border border-violet rounded p-2"
+                    type="text"
+                    placeholder="Introduce la descripción de la nueva actividad"
+                    name="description"
+                    value={activityData.description}
+                    onChange={handleInputOnChange} />
             </div>
-            <div>
-                <label>Imagen de la actividad:</label>
-                <input type="file" placeholder="Introduce el nombre de la nueva actividad" name="imageUrl" onChange={handleFileUpload} />
+            <div className="flex flex-col my-3">
+                <label className="my-2">Imagen de la actividad:</label>
+                <input
+                    type="file"
+                    placeholder="Introduce el nombre de la nueva actividad"
+                    name="imageUrl"
+                    onChange={handleFileUpload} />
             </div>
 
             {
                 errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
             }
-            <div>
-                <button type="submit" disabled={isLoading}>
+            <div className="flex justify-center my-5">
+                <button type="submit" className="bg-violet text-white rounded px-4 py-2" disabled={isLoading}>
                     {isLoading ? 'Uploading' : 'Create'}
                 </button>
             </div>

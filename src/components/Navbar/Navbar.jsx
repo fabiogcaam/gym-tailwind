@@ -29,6 +29,10 @@ const Navbar = () => {
                         <>
                             <Link to={`/profile`}><li className='mt-7'>Profile</li></Link>
                             <Link to={'/'} onClick={closeSession}><li className='mt-7'>Logout</li></Link>
+                            {
+                                loggedUser.typeUser === "ADMIN" &&
+                                <Link to={'/createActivity'}><li className="mt-7">add Activity</li></Link>
+                            }
                         </>
 
                         :

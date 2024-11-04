@@ -22,7 +22,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/:id/profileEdit" element={<ProfileEdit />} />
           <Route path="/:id/bookings" element={<Bookings />} />
-          <Route path="createActivity" element={<CreateActivity />} />
+          <Route path="/createActivity" element={<CreateActivity />} />
         </Route>
       </Routes>
     </div>

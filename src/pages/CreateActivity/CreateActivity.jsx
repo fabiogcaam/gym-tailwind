@@ -3,7 +3,7 @@ import ActivityForm from "./../../components/Forms/ActivityForm"
 const CreateActivity = () => {
 
     return (
-        <div>
+        <div className="mt-20 flex justify-center">
             <ActivityForm />
         </div>
     )
