@@ -22,8 +22,9 @@ class ActivityService {
         return this.api.get('/')
     }
 
-    addActivity(activityInfo) {
-        return this.api.post('/add', activityInfo)
+    addActivity({ name, description, imageUrl }) {
+        console.log("ENTRAMOS EN EL ACTIVITY SERVICE", name, description, imageUrl)
+        return this.api.post('/add', { name, description, imageUrl })
     }
 
     deleteActivity(idActivity) {

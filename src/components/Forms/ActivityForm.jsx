@@ -75,7 +75,7 @@ const ActivityForm = () => {
             </div>
 
             {
-                errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
+                errors && errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
             }
             <div className="flex justify-center my-5">
                 <button type="submit" className="bg-violet text-white rounded px-4 py-2" disabled={isLoading}>
