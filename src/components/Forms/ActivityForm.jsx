@@ -19,7 +19,7 @@ const ActivityForm = () => {
     function handleFileUpload(e) {
         setIsLoading(true)
         const formData = new FormData()
-        formData.append('imageData', e.target.file)
+        formData.append('imageData', e.target.files[0])
 
         uploadServices
             .uploadimage(formData)
