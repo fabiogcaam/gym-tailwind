@@ -8,6 +8,7 @@ import ProfileEdit from "./pages/ProfileEdit/ProfileEdit"
 import Bookings from "./pages/Bookings/Bookings"
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute"
 import CreateActivity from "./pages/CreateActivity/CreateActivity"
+import CreateClass from "./pages/CreateClass/CreateClass"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/:id/profileEdit" element={<ProfileEdit />} />
           <Route path="/:id/bookings" element={<Bookings />} />
           <Route path="/createActivity" element={<CreateActivity />} />
+          <Route path='/createClass' element={<CreateClass />} />
         </Route>
       </Routes>
     </div>
