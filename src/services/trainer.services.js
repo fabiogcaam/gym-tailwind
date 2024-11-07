@@ -22,8 +22,8 @@ class TrainerService {
         return this.api.get('/')
     }
 
-    createTrainer(idActivity, { name, age, description, imageUrl }) {
-        return this.api.post(`/${idActivity}/create`, name, age, description, imageUrl)
+    createTrainer({ name, age, description, imageUrl, activityId }) {
+        return this.api.post(`/create`, name, age, description, imageUrl, activityId)
     }
 
 }
