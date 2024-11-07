@@ -66,35 +66,38 @@ const TrainerForm = () => {
 
     return (
         <form onSubmit={handleCreateTrainerOnSubmit}>
-            <h1 className="my-10">Crea Un Entrenador</h1>
-            <div>
+            <h1 className="my-10 text-2xl font-semibold">Crea Un Entrenador</h1>
+            <div className="flex flex-col justify-center my-3">
                 <label>Nombre:</label>
                 <input
+                    className="border border-violet rounded p-2"
                     type="text"
                     placeholder="Añada el nombre del entrenador"
                     name="name"
                     value={trainerData.name}
                     onChange={handleInputChange} />
             </div>
-            <div>
+            <div className="flex flex-col justify-center my-3">
                 <label>Edad:</label>
                 <input
+                    className="border border-violet rounded p-2"
                     type="number"
                     placeholder="Añada su edad"
                     name="age"
                     value={trainerData.age}
                     onChange={handleInputChange} />
             </div>
-            <div>
+            <div className="flex flex-col justify-center my-3">
                 <label>Descripción:</label>
                 <input
+                    className="border border-violet rounded p-2"
                     type="text"
                     placeholder="Añada su descripción"
                     name="description"
                     value={trainerData.description}
                     onChange={handleInputChange} />
             </div>
-            <div>
+            <div className="flex flex-col justify-center my-3">
                 <label>Foto del entrenador</label>
                 <input
                     type="file"
@@ -102,7 +105,7 @@ const TrainerForm = () => {
                     name="imageUrl"
                     onChange={handleFileUpload} />
             </div>
-            <div>
+            <div className="my-3">
                 <label>Actividad que va a enseñar:</label>
                 <select
                     name="activityId"
@@ -116,8 +119,8 @@ const TrainerForm = () => {
                 </select>
             </div>
             {errors.length > 0 && errors.map(e => <AlertForm key={e} message={e} />)}
-            <div>
-                <input type="submit" disabled={isLoading} value={isLoading ? 'Uploading' : 'Create'} />
+            <div className="flex justify-center mt-8">
+                <input className="px-4 py-2 bg-violet text-white rounded" type="submit" disabled={isLoading} value={isLoading ? 'Uploading' : 'Create'} />
             </div>
         </form>
     )
