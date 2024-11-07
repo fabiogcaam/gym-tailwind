@@ -7,13 +7,13 @@ import AlertForm from "./AlertForm"
 const TrainerForm = () => {
 
     const [trainerData, setTrainerData] = useState({ name: "", age: 0, description: "", imageUrl: "", activityId: "" })
-    const [activities, setActivities] = useState([])
+    const [activities, setActivities] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState([])
 
     useEffect(() => {
-        getAllActivities
-    }, [])
+        getAllActivities()
+    }, [isLoading])
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -40,14 +40,14 @@ const TrainerForm = () => {
 
     const getAllActivities = () => {
 
-        setIsLoading(true)
-
         activityService
             .getActivityList()
             .then(({ data }) => {
+                setIsLoading(true)
                 setActivities(data)
-                setIsLoading(false)
+                console.log("DATOS DE ACTIVITIES", activities)
             })
+            .then(() => setIsLoading(false))
             .catch(err => console.log(err))
 
     }
@@ -66,6 +66,7 @@ const TrainerForm = () => {
 
     return (
         <form onSubmit={handleCreateTrainerOnSubmit}>
+            <h1 className="my-10">Crea Un Entrenador</h1>
             <div>
                 <label>Nombre:</label>
                 <input
@@ -102,13 +103,15 @@ const TrainerForm = () => {
                     onChange={handleFileUpload} />
             </div>
             <div>
-                <label>Actividad que enseña:</label>
+                <label>Actividad que va a enseñar:</label>
                 <select
                     name="activityId"
                     value={trainerData.activityId}
                     onChange={handleInputChange}>
-                    {activities.map(elm => {
-                        <option key={elm._id} value={elm._id}>{elm.name}</option>
+                    {activities && activities.map(elm => {
+                        return (
+                            <option key={elm._id} value={elm._id}>{elm.name}</option>
+                        )
                     })}
                 </select>
             </div>

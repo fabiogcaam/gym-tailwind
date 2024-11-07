@@ -3,7 +3,7 @@ import TrainerForm from "../../components/Forms/TrainerForm"
 const CreateTrainer = () => {
 
     return (
-        <div>
+        <div className="mt-40 flex justify-center">
             <TrainerForm />
         </div>
     )
