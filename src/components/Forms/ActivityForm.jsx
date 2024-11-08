@@ -43,7 +43,7 @@ const ActivityForm = () => {
     }
 
     return (
-        <form onSubmit={handleActivitySubmit}>
+        <form className="w-[500px]" onSubmit={handleActivitySubmit}>
             <h1 className="my-20 font-medium text-2xl">Crear una actividad nueva</h1>
             <div className="flex flex-col my-3">
                 <label className="my-2">Nombre de la actividad:</label>
@@ -77,7 +77,7 @@ const ActivityForm = () => {
             {
                 errors && errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
             }
-            <div className="flex justify-center my-5">
+            <div className="flex justify-center my-8">
                 <button type="submit" className="bg-violet text-white rounded px-4 py-2" disabled={isLoading}>
                     {isLoading ? 'Uploading' : 'Create'}
                 </button>

@@ -64,11 +64,15 @@ const ClassForm = () => {
     }
 
     return (
-        <form className="w-4/6" onSubmit={handleCreateClassOnSubmit}>
-            <h1 className="my-20 font-medium text-wxl">Crea una clase nueva</h1>
+        <form className="w-[500px]" onSubmit={handleCreateClassOnSubmit}>
+            <h1 className="my-16 font-medium text-2xl">Crea una clase nueva</h1>
             <div className="flex flex-col justify-center">
-                <label>Entrenador y Actividad</label>
-                <select name="trainerId" value={classData.trainerId} onChange={handleInputOnChange}>
+                <label className="my-2">Entrenador y Actividad</label>
+                <select
+                    className="border border-violet rounded py-2"
+                    name="trainerId"
+                    value={classData.trainerId}
+                    onChange={handleInputOnChange}>
                     {
                         trainers.map(elm => {
                             return (
@@ -79,8 +83,9 @@ const ClassForm = () => {
                 </select>
             </div>
             <div className="flex flex-col justify-center my-3">
-                <label>Dia de la semana</label>
+                <label className="my-2">Dia de la semana</label>
                 <input
+                    className="border border-violet rounded p-2"
                     type="text"
                     name="day"
                     value={classData.schedule.day}
@@ -88,8 +93,9 @@ const ClassForm = () => {
                     onChange={handleInputOnChange} />
             </div>
             <div className="flex flex-col justify-center my-3">
-                <label>Hora</label>
+                <label className="my-2">Hora</label>
                 <input
+                    className="border border-violet rounded p-2"
                     type="text"
                     name="time"
                     value={classData.schedule.time}
@@ -97,8 +103,9 @@ const ClassForm = () => {
                     onChange={handleInputOnChange} />
             </div>
             <div className="flex flex-col justify-center my-3">
-                <label>Numero de participantes</label>
+                <label className="my-2">Numero de participantes</label>
                 <input
+                    className="border border-violet rounded p-2"
                     type="number"
                     name="numParticipants"
                     value={classData.numParticipants}
@@ -106,7 +113,7 @@ const ClassForm = () => {
                     onChange={handleInputOnChange} />
             </div>
             {errors.length > 0 && errors.map(e => <AlertForm key={e} message={e} />)}
-            <div className="flex justify-center my-5">
+            <div className="flex justify-center my-8">
                 <input className="py-2 px-4 bg-violet text-white rounded" type="submit" value="Crear" />
             </div>
         </form>

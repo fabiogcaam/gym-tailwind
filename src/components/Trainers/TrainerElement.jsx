@@ -10,7 +10,7 @@ const TrainerElement = ({ name, age, description, activity, imageUrl }) => {
                     <img className="object-cover h-full w-full" src={`${imageUrl.replace(".heic", ".jpg")}`} alt={imageUrl} />
                 </figure>
             </div>
-            <div className="text-center">
+            <div className="text-center my-3">
                 <h3 className="text-xl">{name}, {age}</h3>
                 <h5 className="my-2">Clase de {activity}</h5>
                 <p className="my-3">{description}</p>

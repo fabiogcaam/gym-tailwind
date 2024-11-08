@@ -65,10 +65,10 @@ const TrainerForm = () => {
 
 
     return (
-        <form onSubmit={handleCreateTrainerOnSubmit}>
-            <h1 className="my-10 text-2xl font-semibold">Crea Un Entrenador</h1>
-            <div className="flex flex-col justify-center my-3">
-                <label>Nombre:</label>
+        <form className="w-[500px]" onSubmit={handleCreateTrainerOnSubmit}>
+            <h1 className="mt-16 mb-10 text-2xl font-semibold">Crea Un Entrenador</h1>
+            <div className="flex flex-col justify-center mb-3">
+                <label className="my-2">Nombre:</label>
                 <input
                     className="border border-violet rounded p-2"
                     type="text"
@@ -78,7 +78,7 @@ const TrainerForm = () => {
                     onChange={handleInputChange} />
             </div>
             <div className="flex flex-col justify-center my-3">
-                <label>Edad:</label>
+                <label className="my-2">Edad:</label>
                 <input
                     className="border border-violet rounded p-2"
                     type="number"
@@ -88,7 +88,7 @@ const TrainerForm = () => {
                     onChange={handleInputChange} />
             </div>
             <div className="flex flex-col justify-center my-3">
-                <label>Descripción:</label>
+                <label className="my-2">Descripción:</label>
                 <input
                     className="border border-violet rounded p-2"
                     type="text"
@@ -98,16 +98,17 @@ const TrainerForm = () => {
                     onChange={handleInputChange} />
             </div>
             <div className="flex flex-col justify-center my-3">
-                <label>Foto del entrenador</label>
+                <label className="my-2">Foto del entrenador</label>
                 <input
                     type="file"
                     placeholder="Introduce la foto del entrenador"
                     name="imageUrl"
                     onChange={handleFileUpload} />
             </div>
-            <div className="my-3">
+            <div className="my-5">
                 <label>Actividad que va a enseñar:</label>
                 <select
+                    className="border border-violet rounded ml-2 py-1"
                     name="activityId"
                     value={trainerData.activityId}
                     onChange={handleInputChange}>
