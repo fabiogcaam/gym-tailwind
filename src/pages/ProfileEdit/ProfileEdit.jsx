@@ -3,9 +3,9 @@ import { AuthContext } from "./../../context/auth.context"
 
 const ProfileEdit = () => {
 
-    const { authUser } = useContext(AuthContext)
-    console.log(authUser)
-    const [user, setUser] = useState({ name: authUser.name, email: authUser.email, password: authUser.password })
+    const { loggedUser } = useContext(AuthContext)
+    console.log(loggedUser)
+    const [user, setUser] = useState({ name: loggedUser.name, email: loggedUser.email, password: '' })
 
     const handleOnChangeInput = (event) => {
         const { name, value } = event.target
