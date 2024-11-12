@@ -9,7 +9,7 @@ const Information = () => {
     return (
         <div className="Information my-16">
             <h1 className="text-2xl text-center underline underline-offset-8 hover:decoration-violet">Información Práctica</h1>
-            <div className="flex flex-wrap items-center md:mx-20 gap-x-28 mt-10">
+            <div className="flex flex-wrap items-center md:ml-20 gap-x-28 mt-10">
                 <div className="w-full flex flex-col text-center md:w-3/12 hover:border-solid rounded-2 my-5">
                     <h1 className="text-7xl flex justify-center items-center">
                         <CgGym />

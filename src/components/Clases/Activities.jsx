@@ -7,15 +7,15 @@ const Activities = () => {
 
         <div className="my-20">
             <h1 className="underline underline-offset-8 mb-10 text-center text-2xl hover:decoration-violet">Actividades</h1>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="flex flex-col justify-center mx-36 sm:mx-0 md:grid md:grid-cols-3 md:gap-6">
                 {
                     ACTIVITIES.map((elm, index) => {
                         console.log(index)
                         return (
-                            <div key={index} className={`card mx-5 my-5 rounded-md perspective ${index === 6 && "col-start-2 flex justify-center items-center"}`}>
-                                <div className="relative w-full h-64 transition-transform duration-500 transform-style-3d hover:rotate-y-180">
+                            <div key={index} className={`mx-5 my-10 md:mx-5 rounded-md perspective ${index === 6 && "col-start-2 flex justify-center items-center"}`}>
+                                <div className="relative w-4/6 mx-auto md:w-full h-64 transition-transform duration-500 transform-style-3d hover:rotate-y-180">
                                     <div className="absolute backface-hidden w-full h-full">
-                                        <figure>
+                                        <figure className="">
                                             <img className="object-cover w-full h-72 transition-opacity duration-500 hover:opacity-0" src={elm.imageURL} alt={elm.name} />
                                         </figure>
                                     </div>
