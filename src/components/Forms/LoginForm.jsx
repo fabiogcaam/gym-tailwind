@@ -35,7 +35,7 @@ const LoginForm = () => {
     return (
 
         <form
-            className="mx-60 my-44"
+            className="mx-40 md:mx-60 my-44"
             onSubmit={handleLoginOnSubmit}
         >
             <h1 className="text-2xl font-bold mb-16">Login</h1>
@@ -72,7 +72,7 @@ const LoginForm = () => {
                 errors && errors.map(e => <AlertForm key={e} message={e} />)
             }
 
-            <div className="flex justify-center items-center mt-4">
+            <div className="flex justify-center items-center mt-8">
                 <button
                     className="bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"

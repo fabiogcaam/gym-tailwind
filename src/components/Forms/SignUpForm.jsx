@@ -27,7 +27,7 @@ const SignUpForm = () => {
 
     return (
 
-        <div className="mx-60 mt-36 mb-32">
+        <div className="mx-40 md:mx-60 mt-36 mb-32">
             <form onSubmit={handleInputOnSubmit}>
                 <h1 className="font-bold text-2xl my-16">Sign Up</h1>
                 <div className="mb-5">
