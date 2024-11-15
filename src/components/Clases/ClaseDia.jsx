@@ -1,15 +1,22 @@
 import activityService from "../../services/activity.services"
 import bookingService from "../../services/booking.services"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { AuthContext } from "../../context/auth.context"
 
 /* eslint-disable react/prop-types */
 const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }) => {
 
     const [activity, setActivity] = useState('')
+    const [isReserved, setIsReserved] = useState(false)
+    const { loggedUser } = useContext(AuthContext)
 
     useEffect(() => {
         getActivityName()
     }, [trainer, participants])
+
+    useEffect(() => {
+        checkIsReserved()
+    }, [])
 
     function getActivityName() {
         console.log(trainer.activity)
@@ -30,6 +37,12 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
             .catch(err => console.log(err))
     }
 
+    function checkIsReserved() {
+        if (participants.includes(loggedUser._id)) {
+            setIsReserved(true)
+        }
+    }
+
     function cancelBooking() {
         bookingService
             .deleteBooking()
@@ -43,7 +56,7 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
             <h4>Horario: {schedule.time}</h4>
             <h5>Sitios {numParticipants - participants.length}/{numParticipants} libres</h5>
             <div className="flex justify-end">
-                <button id={id} onClick={numParticipants - participants.length ? () => addToBookings() : () => cancelBooking()} className={numParticipants - participants.length ? "bg-violet px-2 py-1 text-white rounded" : "invisible"}>{numParticipants - participants.length ? "Reservar" : "Lleno"}</button>
+                <button id={id} onClick={!isReserved ? () => addToBookings() : () => cancelBooking()} className={!isReserved ? "bg-violet px-2 py-1 text-white rounded" : "bg-red-400 px-2 py-1 text-white rounded"}>{!isReserved ? "Reservar" : "Cancelar"}</button>
             </div>
         </div>
     )

@@ -46,7 +46,7 @@ const Calendar = () => {
                 view='month'
                 onClickDay={(date) => handleDateChange(date)} />
 
-            <div>
+            <div className='mt-5'>
                 {
                     classes.map(elm => {
                         return (
