@@ -4,8 +4,8 @@ import { PRICES, COLORS } from "../../const/const"
 const Prices = () => {
 
     return (
-        <div className="mt-48">
-            <h1 className="text-2xl text-center underline underline-offset-8 hover:decoration-violet">Precios</h1>
+        <div className="mt-24">
+            <h1 className="text-2xl mb-16 text-center underline underline-offset-8 hover:decoration-violet">Precios</h1>
             <div className="flex flex-col h-auto justify-center items-center md:h-256 md:flex-row md:justify-around">
                 {
                     PRICES.map((elm, index) => {

@@ -1,6 +1,26 @@
 import { ACTIVITIES } from "../../const/const"
+import activityService from "../../services/activity.services"
+import { useEffect, useState } from "react"
 
 const Activities = () => {
+
+    const [activities, setActivities] = useState([])
+
+    useEffect(() => {
+        getAllActivities()
+    }, [])
+
+
+    const getAllActivities = () => {
+
+        activityService
+            .getActivityList()
+            .then(({ data }) => {
+                console.log(data)
+                setActivities(data)
+            })
+            .catch(err => console.log(err))
+    }
 
 
     return (

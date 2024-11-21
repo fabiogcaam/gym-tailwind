@@ -34,6 +34,7 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
         bookingService
             .createBooking({ classId: id, bookingDate: date })
             .then(() => console.log("Añadido a tus reservas"))
+            .then(() => setIsReserved(true))
             .catch(err => console.log(err))
     }
 
@@ -47,6 +48,7 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
         bookingService
             .deleteBooking()
             .then(() => console.log("Reserva eleminada"))
+            .then(() => setIsReserved(false))
             .catch(err => console.log(err))
     }
 
