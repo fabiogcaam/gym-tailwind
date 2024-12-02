@@ -69,7 +69,7 @@ const Trainers = () => {
                 trainers ?
                     <div className="flex justify-between mb-4 items-center">
 
-                        <button onClick={handlePrev} className="bg-gold text-violet p-2 rounded ml-5 mr-5 h-10">Prev</button>
+                        <button onClick={handlePrev} className="bg-gold text-violet p-2 rounded mx-5 h-10">Prev</button>
                         <div className={`flex flex-col ${isMobileView ? 'w-full' : 'w-3/6 md:grid md:grid-col-3 md:grid-flow-col md:gap-6'} mt-10`}>
                             {
                                 visibleTrainers ?
@@ -83,7 +83,7 @@ const Trainers = () => {
                             }
 
                         </div>
-                        <button onClick={handleNext} className="bg-gold text-violet p-2 rounded mr-5 h-10">Next</button>
+                        <button onClick={handleNext} className="bg-gold text-violet p-2 rounded mx-5 h-10">Next</button>
                     </div>
                     :
                     <p>Esperando a obtener datos</p>
