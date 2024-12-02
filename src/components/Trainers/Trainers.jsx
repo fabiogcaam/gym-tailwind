@@ -8,10 +8,25 @@ const Trainers = () => {
     const [trainers, setTrainers] = useState(null)
     const [visibleTrainers, setVisibleTrainers] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [isMobileView, setIsMobileView] = useState(false)
+
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsMobileView(window.innerWidth <= 768)
+        }
+
+        handleResize()
+        window.addEventListener("resize", handleResize)
+
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [])
 
     useEffect(() => {
         getTrainerList()
-    }, [isLoading, currentIndex])
+    }, [isLoading, currentIndex, isMobileView])
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % trainers.length)
@@ -32,11 +47,17 @@ const Trainers = () => {
                 setTrainers(data)
             })
             .then(() => {
-                setVisibleTrainers([
-                    trainers[currentIndex % trainers.length],
-                    trainers[(currentIndex + 1) % trainers.length],
-                    trainers[(currentIndex + 2) % trainers.length],
-                ])
+                if (isMobileView) {
+                    setVisibleTrainers([
+                        trainers[currentIndex % trainers.length]
+                    ])
+                } else {
+                    setVisibleTrainers([
+                        trainers[currentIndex % trainers.length],
+                        trainers[(currentIndex + 1) % trainers.length],
+                        trainers[(currentIndex + 2) % trainers.length],
+                    ])
+                }
             })
             .catch(err => console.log(err))
     }
@@ -49,7 +70,7 @@ const Trainers = () => {
                     <div className="flex justify-between mb-4 items-center">
 
                         <button onClick={handlePrev} className="bg-gold text-violet p-2 rounded ml-5 mr-5 h-10">Prev</button>
-                        <div className="grid grid-col-3 grid-flow-col gap-6 mt-10">
+                        <div className={`flex flex-col ${isMobileView ? 'w-full' : 'w-3/6 md:grid md:grid-col-3 md:grid-flow-col md:gap-6'} mt-10`}>
                             {
                                 visibleTrainers ?
                                     visibleTrainers.map((elm, index) => {
