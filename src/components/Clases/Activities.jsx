@@ -1,4 +1,3 @@
-import { ACTIVITIES } from "../../const/const"
 import activityService from "../../services/activity.services"
 import { useEffect, useState } from "react"
 
