@@ -3,7 +3,7 @@ import classService from "../../services/class.services"
 import activityService from "../../services/activity.services"
 
 /* eslint-disable react/prop-types */
-const BookingElement = ({ clase, status }) => {
+const BookingElement = ({ id, clase, cancelBooking }) => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [classData, setClassData] = useState(null)
@@ -44,7 +44,8 @@ const BookingElement = ({ clase, status }) => {
                 <h3>Clase de {activity} el día {classData.schedule.day} de {classData.schedule.time}</h3>
                 <p>Con el profesor {classData.trainer.name}</p>
                 <div className="flex justify-end">
-                    <h3 className={status == "Reserved" ? 'text-green-600' : 'text-red-700'}>{status == "Reserved" ? 'En reserva' : 'Finalizada'}</h3>
+                    <button className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-700" onClick={() => { cancelBooking(id) }}>Cancelar</button>
+
                 </div>
             </div>
             :

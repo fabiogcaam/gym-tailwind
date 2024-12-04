@@ -27,8 +27,9 @@ class BookingServices {
         return this.api.post('/finished', bookingId)
     }
 
-    deleteBooking(classId) {
-        return this.api.post(`/${classId}/delete`)
+    deleteBooking(bookingId) {
+        console.log("ESTO ES EL BOOKING SERVICES CON ", bookingId)
+        return this.api.post(`/${bookingId}/delete`)
     }
 
 }

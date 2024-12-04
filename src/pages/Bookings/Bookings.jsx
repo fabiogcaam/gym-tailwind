@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import userService from "./../../services/user.services"
 import BookingElement from "../../components/BookingElements/BookingElement"
 import { useParams } from "react-router-dom"
-
+import bookingServices from "../../services/booking.services"
 
 
 const Bookings = () => {
@@ -28,6 +28,18 @@ const Bookings = () => {
             .catch(err => console.log(err))
     }
 
+    function cancelBooking(id) {
+
+        setIsLoading(true)
+
+        bookingServices
+            .deleteBooking(id)
+            .then(() => {
+                console.log("Se ha borrado correctamente la reserva")
+                setIsLoading(false)
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <div className="mt-24 w-auto flex flex-col items-center">
@@ -35,7 +47,7 @@ const Bookings = () => {
                 bookings ?
                     bookings.map(elm => {
                         return (
-                            < BookingElement key={elm._id} clase={elm.class} status={elm.status} />
+                            < BookingElement key={elm._id} id={elm._id} clase={elm.class} status={elm.status} cancelBooking={cancelBooking} />
                         )
                     })
                     :
