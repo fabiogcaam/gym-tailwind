@@ -22,6 +22,10 @@ class TrainerService {
         return this.api.get('/')
     }
 
+    getTrainersByActivity(id) {
+        return this.api.get(`/${id}`)
+    }
+
     createTrainer({ name, age, description, imageUrl, activityId }) {
         console.log("ENTRAMOS EN LOS DATOS DEL ENTRENADOR QUE ESTAMOS CREANDO", activityId)
         return this.api.post(`/create`, { name, age, description, imageUrl, activityId })

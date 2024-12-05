@@ -32,8 +32,12 @@ class ActivityService {
     }
 
     getActivity(activity) {
-        console.log("Esto es el service del activity", activity)
         return this.api.get(`/getById/${activity}`)
+    }
+
+    getActivityById(id) {
+        console.log("ENTRAMOS EN EL SERVICE DE ACTIVITY", id)
+        return this.api.get(`/${id}`)
     }
 
 }

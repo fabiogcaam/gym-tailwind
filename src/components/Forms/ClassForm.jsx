@@ -2,13 +2,22 @@ import { useEffect, useState } from "react"
 import trainerService from "../../services/trainer.services"
 import AlertForm from "./AlertForm"
 import classService from "../../services/class.services"
+import activityService from "../../services/activity.services"
+import { useParams } from "react-router-dom"
+
 
 const ClassForm = () => {
 
+    const [activity, setActivity] = useState({})
     const [classData, setClassData] = useState({ trainerId: "", schedule: { day: "", time: "" }, numParticipants: 0 })
     const [trainers, setTrainers] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState([])
+    const { id } = useParams()
+
+    useEffect(() => {
+        getActivity()
+    }, [])
 
     useEffect(() => {
         getTrainers()
@@ -54,7 +63,7 @@ const ClassForm = () => {
 
     const getTrainers = () => {
         trainerService
-            .getTrainers()
+            .getTrainersByActivity(id)
             .then(({ data }) => {
                 setIsLoading(true)
                 setTrainers(data)
@@ -63,9 +72,19 @@ const ClassForm = () => {
             .catch(err => setErrors(err.response.data.errorMessage))
     }
 
+    const getActivity = () => {
+        activityService
+            .getActivityById(id)
+            .then(({ data }) => {
+                console.log(data)
+                setActivity(data)
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <form className="w-[500px]" onSubmit={handleCreateClassOnSubmit}>
-            <h1 className="my-16 font-medium text-2xl">Crea una clase nueva</h1>
+            <h1 className="my-16 font-medium text-2xl">Crea una clase de {activity.name} nueva</h1>
             <div className="flex flex-col justify-center">
                 <label className="my-2">Entrenador y Actividad</label>
                 <select

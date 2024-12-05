@@ -25,7 +25,7 @@ function App() {
           <Route path="/profileEdit" element={<ProfileEdit />} />
           <Route path="/:id/bookings" element={<Bookings />} />
           <Route path="/createActivity" element={<CreateActivity />} />
-          <Route path='/createClass' element={<CreateClass />} />
+          <Route path='/:id/createClass' element={<CreateClass />} />
           <Route path='/createTrainer' element={<CreateTrainer />} />
         </Route>
       </Routes>

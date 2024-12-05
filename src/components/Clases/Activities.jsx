@@ -1,9 +1,12 @@
 import activityService from "../../services/activity.services"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { AuthContext } from "../../context/auth.context"
+import { Link } from "react-router-dom"
 
 const Activities = () => {
 
     const [activities, setActivities] = useState([])
+    const { loggedUser } = useContext(AuthContext)
 
     useEffect(() => {
         getAllActivities()
@@ -41,6 +44,13 @@ const Activities = () => {
                                     <div className="absolute inset-0 flex flex-col h-72 justify-center items-center bg-violet bg-opacity-80 text-white opacity-0 transition-opacity duration-500 hover:opacity-100">
                                         <h3 className="text-xl my-4">{elm.name}</h3>
                                         <p className="my-3 mx-3">{elm.description}</p>
+                                        {
+                                            loggedUser?.typeUser === "ADMIN" &&
+
+                                            <Link to={`/${elm._id}/createClass`}>
+                                                <button className="bg-gold text-white px-2 py-1 rounded">Crear Clase</button>
+                                            </Link>
+                                        }
                                     </div>
                                 </div>
                             </div>

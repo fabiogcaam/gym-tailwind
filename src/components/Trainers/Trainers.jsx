@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import trainerService from "../../services/trainer.services"
 import TrainerElement from "./TrainerElement"
+import { AuthContext } from "../../context/auth.context"
+import { Link } from "react-router-dom"
 
 const Trainers = () => {
 
@@ -9,6 +11,7 @@ const Trainers = () => {
     const [visibleTrainers, setVisibleTrainers] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [isMobileView, setIsMobileView] = useState(false)
+    const { loggedUser } = useContext(AuthContext)
 
     useEffect(() => {
 
@@ -88,6 +91,15 @@ const Trainers = () => {
                     :
                     <p>Esperando a obtener datos</p>
             }
+            {
+                loggedUser?.typeUser === "ADMIN" &&
+
+                <div className="flex justify-center mt-16">
+                    <Link to="/createTrainer" className="bg-violet px-2 py-1 text-white rounded">Nuevo Trainer</Link>
+                </div>
+
+            }
+
         </div>
     )
 

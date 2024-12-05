@@ -34,7 +34,6 @@ const Navbar = () => {
                                 <>
                                     <Link to={'/createActivity'}><li className="mt-7">New Activity</li></Link>
                                     <Link to={'/createClass'}><li className="mt-7">New Class</li></Link>
-                                    <Link to={'/createTrainer'}><li className="mt-7">New Trainer</li></Link>
                                 </>
                             }
                         </>
