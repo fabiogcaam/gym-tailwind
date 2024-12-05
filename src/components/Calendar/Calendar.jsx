@@ -13,6 +13,7 @@ const Calendar = () => {
         handleDateChange(date)
     }, [date])
 
+
     function handleDateChange(newDate) {
         setDate(newDate)
         console.log(date)
@@ -50,7 +51,7 @@ const Calendar = () => {
                 {
                     classes.map(elm => {
                         return (
-                            <ClaseDia key={elm._id} id={elm._id} activity={elm.activity} trainer={elm.trainer} schedule={elm.schedule} numParticipants={elm.numParticipants} participants={elm.participants} date={date} />
+                            <ClaseDia key={elm._id} id={elm._id} activity={elm.activity} trainer={elm.trainer} schedule={elm.schedule} numParticipants={elm.numParticipants} participants={elm.participants} date={date} getClasses={getClassesAtDay} />
                         )
                     })
                 }

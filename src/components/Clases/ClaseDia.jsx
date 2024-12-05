@@ -4,15 +4,19 @@ import { useState, useEffect, useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
 
 /* eslint-disable react/prop-types */
-const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }) => {
+const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date, getClasses }) => {
 
     const [activity, setActivity] = useState('')
     const [isReserved, setIsReserved] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const { loggedUser } = useContext(AuthContext)
 
     useEffect(() => {
         getActivityName()
-    }, [trainer, participants])
+        if (isLoading) {
+            getClasses()
+        }
+    }, [trainer, participants, isLoading])
 
     useEffect(() => {
         checkIsReserved()
@@ -31,10 +35,14 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
 
     function addToBookings() {
         console.log("A ver que valor es este", id, "Y fecha", date)
+        setIsLoading(true)
         bookingService
             .createBooking({ classId: id, bookingDate: date })
             .then(() => console.log("Añadido a tus reservas"))
-            .then(() => setIsReserved(true))
+            .then(() => {
+                setIsReserved(true)
+                setIsLoading(false)
+            })
             .catch(err => console.log(err))
     }
 
