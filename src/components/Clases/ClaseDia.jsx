@@ -52,13 +52,6 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date, 
         }
     }
 
-    function cancelBooking() {
-        bookingService
-            .deleteBooking()
-            .then(() => console.log("Reserva eleminada"))
-            .then(() => setIsReserved(false))
-            .catch(err => console.log(err))
-    }
 
     return (
         <div className="bg-gray-100 border-violet border rounded-xl mt-5 px-5 py-5 w-[500px]">
@@ -66,7 +59,12 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date, 
             <h4>Horario: {schedule.time}</h4>
             <h5>Sitios {numParticipants - participants.length}/{numParticipants} libres</h5>
             <div className="flex justify-end">
-                <button id={id} onClick={!isReserved ? () => addToBookings() : () => cancelBooking()} className={!isReserved ? "bg-violet px-2 py-1 text-white rounded" : "bg-red-400 px-2 py-1 text-white rounded"}>{!isReserved ? "Reservar" : "Cancelar"}</button>
+                {
+                    !isReserved ?
+                        <button id={id} onClick={() => addToBookings()} className="bg-violet px-2 py-1 text-white rounded hover:bg-gold">Reservar</button>
+                        :
+                        <h3 className="text-green-600">Reservado</h3>
+                }
             </div>
         </div>
     )
