@@ -17,11 +17,8 @@ const ClassForm = () => {
 
     useEffect(() => {
         getActivity()
-    }, [])
-
-    useEffect(() => {
         getTrainers()
-    }, [isLoading])
+    }, [])
 
     const handleInputOnChange = (event) => {
         const { value, name } = event.target
@@ -62,13 +59,14 @@ const ClassForm = () => {
     }
 
     const getTrainers = () => {
+        setIsLoading(true)
         trainerService
             .getTrainersByActivity(id)
             .then(({ data }) => {
-                setIsLoading(true)
+                console.log("ESTOS SON LOS DATOS", data)
                 setTrainers(data)
-                setIsLoading(false)
             })
+            .then(() => setIsLoading(false))
             .catch(err => setErrors(err.response.data.errorMessage))
     }
 
@@ -131,9 +129,9 @@ const ClassForm = () => {
                     placeholder="Introduce el numero de personas en la clase"
                     onChange={handleInputOnChange} />
             </div>
-            {errors.length > 0 && errors.map(e => <AlertForm key={e} message={e} />)}
+            {errors?.length > 0 && errors.map(e => <AlertForm key={e} message={e} />)}
             <div className="flex justify-center my-8">
-                <input className="py-2 px-4 bg-violet text-white rounded" type="submit" value="Crear" />
+                <input className="py-2 px-4 bg-violet text-white rounded" type="submit" value="Crear" disabled={isLoading} />
             </div>
         </form>
     )
