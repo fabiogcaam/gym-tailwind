@@ -10,19 +10,25 @@ const Calendar = () => {
     const [classes, setClasses] = useState([])
 
     useEffect(() => {
-        handleDateChange(date)
+        getClassesAtDay(date)
     }, [date])
 
 
     function handleDateChange(newDate) {
-        setDate(newDate)
-        console.log(date)
-        getClassesAtDay()
+        const adjustedDate = new Date(newDate)
+        console.log("ESTA ES LA FECHA DE HOY:", adjustedDate)
+
+        adjustedDate.setHours(0, 0, 0, 0);  // Asegura que la hora sea 00:00:00.000
+
+        if (adjustedDate.getTime() !== date.getTime()) {
+            setDate(adjustedDate)
+        }
+        getClassesAtDay(adjustedDate)
     }
 
-    function getClassesAtDay() {
+    function getClassesAtDay(adjustedDate) {
 
-        const day = date.toLocaleString('en-US', { weekday: 'long' })
+        const day = adjustedDate.toLocaleDateString('en-CA')
 
         console.log("eestoy aqui", day)
 
@@ -33,6 +39,9 @@ const Calendar = () => {
                 setClasses(data)
             })
             .catch(err => console.log(err))
+
+        console.error('Fecha no valida')
+
 
     }
 

@@ -11,14 +11,15 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date, 
     const [isLoading, setIsLoading] = useState(false)
     const { loggedUser } = useContext(AuthContext)
 
-    useEffect(() => {
-        getActivityName()
-        if (isLoading) {
-            getClasses()
-        }
-    }, [trainer, participants, isLoading])
+    // useEffect(() => {
+    //     getActivityName()
+    //     if (isLoading) {
+    //         getClasses()
+    //     }
+    // }, [trainer, participants, isLoading])
 
     useEffect(() => {
+        getActivityName()
         checkIsReserved()
     }, [])
 

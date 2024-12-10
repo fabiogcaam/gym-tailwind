@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom"
 const ClassForm = () => {
 
     const [activity, setActivity] = useState({})
-    const [classData, setClassData] = useState({ trainerId: "", schedule: { time: "" }, numParticipants: 0, dates: null })
+    const [classData, setClassData] = useState({ trainerId: "", schedule: { time: "" }, numParticipants: 0, dates: "" })
     const [trainers, setTrainers] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState([])
@@ -31,6 +31,13 @@ const ClassForm = () => {
                     [name]: value
                 }
             })
+        } else if (name === "numParticipants") {
+
+            setClassData({
+                ...classData,
+                [name]: parseInt(value, 10) || 0
+            })
+
         } else {
             setClassData({
                 ...classData,
@@ -47,7 +54,7 @@ const ClassForm = () => {
 
         setClassData({
             ...classData,
-            dates: [new Date(value).toISOString()]
+            dates: new Date(value).toISOString()
         })
     }
 
@@ -130,7 +137,9 @@ const ClassForm = () => {
                 <input
                     className="border border-violet rounded p-2"
                     type="date"
-                    value={classData.dates && classData.dates.length > 0 ? classData.dates[0].toISOString().split('T')[0] : ""}
+                    value={classData.dates
+                        ? classData.dates.split('T')[0]
+                        : ""}
                     min={today}
                     onChange={handleDateChange}
                 />
