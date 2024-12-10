@@ -23,19 +23,18 @@ const Navbar = () => {
                     </>
                 }
             </ul>
+            {
+                loggedUser && loggedUser.typeUser === "ADMIN" &&
+                <ul className="text-white">
+                    <Link to={'/createActivity'}><li className="mt-7">New Activity</li></Link>
+                </ul>
+            }
             <ul className='flex space-x-8 text-white mr-8'>
                 {
                     loggedUser ?
                         <>
                             <Link to={`/profile`}><li className='mt-7'>Profile</li></Link>
                             <Link to={'/'} onClick={closeSession}><li className='mt-7'>Logout</li></Link>
-                            {
-                                loggedUser.typeUser === "ADMIN" &&
-                                <>
-                                    <Link to={'/createActivity'}><li className="mt-7">New Activity</li></Link>
-                                    <Link to={'/createClass'}><li className="mt-7">New Class</li></Link>
-                                </>
-                            }
                         </>
 
                         :

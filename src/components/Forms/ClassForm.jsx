@@ -9,11 +9,12 @@ import { useParams } from "react-router-dom"
 const ClassForm = () => {
 
     const [activity, setActivity] = useState({})
-    const [classData, setClassData] = useState({ trainerId: "", schedule: { day: "", time: "" }, numParticipants: 0 })
+    const [classData, setClassData] = useState({ trainerId: "", schedule: { time: "" }, numParticipants: 0, dates: null })
     const [trainers, setTrainers] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState([])
     const { id } = useParams()
+    const today = new Date().toISOString().split('T')[0]
 
     useEffect(() => {
         getActivity()
@@ -22,7 +23,7 @@ const ClassForm = () => {
 
     const handleInputOnChange = (event) => {
         const { value, name } = event.target
-        if (name === "day" || name === "time") {
+        if (name === "time") {
             setClassData({
                 ...classData,
                 schedule: {
@@ -36,6 +37,18 @@ const ClassForm = () => {
                 [name]: value
             })
         }
+
+        console.log("JIIJI", classData)
+    }
+
+    const handleDateChange = (event) => {
+
+        const { value } = event.target
+
+        setClassData({
+            ...classData,
+            dates: [new Date(value).toISOString()]
+        })
     }
 
     const createNewClass = () => {
@@ -52,8 +65,10 @@ const ClassForm = () => {
     }
 
 
+
     const handleCreateClassOnSubmit = (e) => {
         e.preventDefault()
+        console.log("ESTOS SON LOS VALORES DE LA NUEVA CLASE:", classData)
         createNewClass()
 
     }
@@ -66,9 +81,20 @@ const ClassForm = () => {
                 console.log("ESTOS SON LOS DATOS", data)
                 setTrainers(data)
             })
-            .then(() => setIsLoading(false))
             .catch(err => setErrors(err.response.data.errorMessage))
+            .finally(() => {
+                setIsLoading(false)
+            })
     }
+
+    useEffect(() => {
+        if (trainers.length > 0) {
+            setClassData({
+                ...classData,
+                trainerId: trainers[0]._id
+            })
+        }
+    }, [trainers])
 
     const getActivity = () => {
         activityService
@@ -99,15 +125,15 @@ const ClassForm = () => {
                     }
                 </select>
             </div>
-            <div className="flex flex-col justify-center my-3">
-                <label className="my-2">Dia de la semana</label>
+            <div className="mt-5">
+                <label className="mr-5">Fecha de la clase: </label>
                 <input
                     className="border border-violet rounded p-2"
-                    type="text"
-                    name="day"
-                    value={classData.schedule.day}
-                    placeholder="Dia de la semana en inglés"
-                    onChange={handleInputOnChange} />
+                    type="date"
+                    value={classData.dates && classData.dates.length > 0 ? classData.dates[0].toISOString().split('T')[0] : ""}
+                    min={today}
+                    onChange={handleDateChange}
+                />
             </div>
             <div className="flex flex-col justify-center my-3">
                 <label className="my-2">Hora</label>

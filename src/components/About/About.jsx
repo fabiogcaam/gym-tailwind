@@ -5,7 +5,7 @@ const About = () => {
             <div className="h-2/6 flex space-between">
                 <section className="flex space-between justify-middle items-center">
                     <article className="w-4/6 ml-32">
-                        <h4>En nuestro gimnasio, te ayudamos a alcanzar tu máximo potencial. Ofrecemos clases, entrenamiento personalizado y un ambiente motivador, para que logres tus metas de salud y bienestar físico.</h4>
+                        <h4 className="text-lg mr-6">En nuestro gimnasio, te ayudamos a alcanzar tu máximo potencial. Ofrecemos clases, entrenamiento personalizado y un ambiente motivador, para que logres tus metas de salud y bienestar físico.</h4>
                     </article>
                     <article className="w-2/6 mx-10 relative">
                         <figure >
@@ -22,7 +22,7 @@ const About = () => {
                         </figure>
                     </article>
                     <article className="w-4/6 mx-20">
-                        <h4>Somos más que un gimnasio: una comunidad que apoya tu progreso. Con instalaciones modernas y entrenadores dedicados, te acompañamos en tu camino hacia un estilo de vida activo y saludable.</h4>
+                        <h4 className="text-lg mx-6">Somos más que un gimnasio: una comunidad que apoya tu progreso. Con instalaciones modernas y entrenadores dedicados, te acompañamos en tu camino hacia un estilo de vida activo y saludable.</h4>
                     </article>
                 </section>
             </div>

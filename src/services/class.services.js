@@ -31,9 +31,9 @@ class ClassService {
         return this.api.get(`/${day}/day`)
     }
 
-    addClass({ trainerId, schedule, numParticipants }) {
-        console.log("ENTRAMOS EN EL SERVICE DE CREAR CLASE", trainerId)
-        return this.api.post('/add', { trainerId, schedule, numParticipants })
+    addClass({ trainerId, schedule, numParticipants, dates }) {
+        console.log("ENTRAMOS EN EL SERVICE DE CREAR CLASE", trainerId, schedule, numParticipants, dates)
+        return this.api.post('/add', { trainerId, schedule, numParticipants, dates })
     }
 
     deleteClass(id) {
