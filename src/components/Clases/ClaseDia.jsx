@@ -4,19 +4,12 @@ import { useState, useEffect, useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
 
 /* eslint-disable react/prop-types */
-const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date, getClasses }) => {
+const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }) => {
 
     const [activity, setActivity] = useState('')
     const [isReserved, setIsReserved] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
     const { loggedUser } = useContext(AuthContext)
 
-    // useEffect(() => {
-    //     getActivityName()
-    //     if (isLoading) {
-    //         getClasses()
-    //     }
-    // }, [trainer, participants, isLoading])
 
     useEffect(() => {
         getActivityName()
@@ -36,13 +29,11 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date, 
 
     function addToBookings() {
         console.log("A ver que valor es este", id, "Y fecha", date)
-        setIsLoading(true)
         bookingService
             .createBooking({ classId: id, bookingDate: date })
             .then(() => console.log("Añadido a tus reservas"))
             .then(() => {
                 setIsReserved(true)
-                setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
@@ -65,6 +56,10 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date, 
                         <button id={id} onClick={() => addToBookings()} className="bg-violet px-2 py-1 text-white rounded hover:bg-gold">Reservar</button>
                         :
                         <h3 className="text-green-600">Reservado</h3>
+                }
+                {
+                    participants.length - numParticipants && !isReserved &&
+                    <h3 className="text-red-700">Lleno</h3>
                 }
             </div>
         </div>

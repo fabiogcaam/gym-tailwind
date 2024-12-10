@@ -60,7 +60,7 @@ const Calendar = () => {
                 {
                     classes.map(elm => {
                         return (
-                            <ClaseDia key={elm._id} id={elm._id} activity={elm.activity} trainer={elm.trainer} schedule={elm.schedule} numParticipants={elm.numParticipants} participants={elm.participants} date={date} getClasses={getClassesAtDay} />
+                            <ClaseDia key={elm._id} id={elm._id} activity={elm.activity} trainer={elm.trainer} schedule={elm.schedule} numParticipants={elm.numParticipants} participants={elm.participants} date={date} />
                         )
                     })
                 }
