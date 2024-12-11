@@ -27,8 +27,10 @@ const Activities = () => {
 
     return (
 
-        <div className="my-20">
-            <h1 className="underline underline-offset-8 mb-10 text-center text-2xl hover:decoration-violet">Actividades</h1>
+        <div className="my-20 py-24 bg-gold">
+            <div className="flex justify-center mx-auto w-1/5 border border-violet rounded-full py-2 mb-8">
+                <h1 className="underline underline-offset-8 text-center text-xl hover:decoration-violet text-violet">Actividades</h1>
+            </div>
             <div className="flex flex-col justify-center mx-36 sm:mx-0 md:grid md:grid-cols-3 md:gap-6">
                 {
                     activities.map((elm, index) => {

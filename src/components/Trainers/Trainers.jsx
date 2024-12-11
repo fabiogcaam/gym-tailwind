@@ -66,8 +66,10 @@ const Trainers = () => {
     }
 
     return (
-        <div className="Trainers my-20">
-            <h1 className="text-2xl mb-10 text-center underline underline-offset-8 hover:decoration-violet">Entrenadores</h1>
+        <div className="Trainers my-20 py-20">
+            <div className="flex justify-center w-1/5 border border-black mx-auto rounded-full py-2 mb-10">
+                <h1 className="text-xl text-center underline underline-offset-8 hover:decoration-violet">Entrenadores</h1>
+            </div>
             {
                 trainers ?
                     <div className="flex justify-between mb-4 items-center">
