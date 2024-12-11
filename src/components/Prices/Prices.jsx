@@ -11,7 +11,7 @@ const Prices = () => {
                     PRICES.map((elm, index) => {
                         return (
                             <div key={index}
-                                className={`${COLORS[index % COLORS.length]} text-white text-center myb-5 py-10 rounded-xl h-128 w-80 flex flex-col items-center justify-center sm:my-5 relative hover:z-10 transition-all duration-300 ease-in-out transform hover:scale-110`}>
+                                className={`${COLORS[index % COLORS.length]} text-white text-center py-10 rounded-xl h-128 w-80 flex flex-col items-center justify-center sm:my-8 relative hover:z-10 transition-all duration-300 ease-in-out transform hover:scale-110`}>
                                 <h1 className="text-3xl font-semibold mb-3">{elm.name}</h1>
                                 <h2 className="text-4xl my-5">{elm.price} €</h2>
                                 <ul>
