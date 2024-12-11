@@ -27,6 +27,10 @@ class BookingServices {
         return this.api.post('/finished', bookingId)
     }
 
+    findBookingByClass({ classId }) {
+        return this.api.get('/byClass', classId)
+    }
+
     deleteBooking(bookingId) {
         console.log("ESTO ES EL BOOKING SERVICES CON ", bookingId)
         return this.api.post(`/${bookingId}/delete`)

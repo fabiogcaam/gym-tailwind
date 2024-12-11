@@ -27,6 +27,7 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
             .catch(err => console.log(err))
     }
 
+
     function addToBookings() {
         console.log("A ver que valor es este", id, "Y fecha", date)
         bookingService
