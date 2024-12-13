@@ -7,7 +7,7 @@ import { FaChalkboardTeacher } from "react-icons/fa"
 const Information = () => {
 
     return (
-        <div className="my-24 pt-16 pb-24 bg-violet">
+        <div className="my-24 py-24 bg-violet">
             <div className="border-white border flex justify-center mx-auto w-1/5 py-2 rounded-full">
                 <h1 className="text-xl text-center underline underline-offset-8 hover:decoration-gold text-white">Información Práctica</h1>
             </div>

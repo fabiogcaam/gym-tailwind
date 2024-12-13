@@ -5,20 +5,22 @@ import bookingServices from "../../services/booking.services"
 
 
 /* eslint-disable react/prop-types */
-const BookingElement = ({ id, clase, cancelBooking }) => {
+const BookingElement = ({ id, clase, status, cancelBooking }) => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [classData, setClassData] = useState(null)
     const [activity, setActivity] = useState("")
-    const [myBooking, setMyBooking] = useState(null)
+    const today = new Date()
 
     useEffect(() => {
         getClasses()
     }, [isLoading])
 
     useEffect(() => {
-        bookingOfClass()
-    }, [])
+        if (status !== "Finished" && today > classData?.dates) {
+            checkIfFinished()
+        }
+    }, [classData])
 
     function getClasses() {
 
@@ -36,13 +38,14 @@ const BookingElement = ({ id, clase, cancelBooking }) => {
     }
 
     function checkIfFinished() {
-        const todaysDate = new Date()
 
-        if (todaysDate >= classData.date && myBooking.status !== "Finished") {
-            bookingServices.finishedBooking()
-                .then(() => console.log("Se ha acabado la clase"))
-                .catch(err => console.log(err))
-        }
+        console.log("ENTRAMOS EN FINALIZAR")
+
+        bookingServices.finishedBooking(id)
+            .then(() => console.log("Se ha acabado la clase"))
+            .catch(err => console.log(err))
+
+
     }
 
     function getActivityOfClass(activityId) {
@@ -55,15 +58,6 @@ const BookingElement = ({ id, clase, cancelBooking }) => {
             .catch(err => console.log(err))
     }
 
-    function bookingOfClass() {
-
-        bookingServices.findBookingByClass(clase)
-            .then(booking => setMyBooking(booking))
-            .then(() => checkIfFinished())
-            .catch(err => console.log(err))
-
-    }
-
     return (
         classData ?
             <div className="bg-grey-100 border border-violet p-5 mt-5 w-3/6 rounded-xl">
@@ -71,7 +65,7 @@ const BookingElement = ({ id, clase, cancelBooking }) => {
                 <p>Con el profesor {classData.trainer.name}</p>
                 <div className="flex justify-end">
                     {
-                        myBooking.status !== "Finished" ?
+                        status !== "Finished" ?
 
                             <button className="bg-red-500 text-white rounded px-2 py-1 hover:bg-red-700" onClick={() => { cancelBooking(id) }}>Cancelar</button>
                             :

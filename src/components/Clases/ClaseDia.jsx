@@ -59,7 +59,7 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
                         <h3 className="text-green-600">Reservado</h3>
                 }
                 {
-                    participants.length - numParticipants && !isReserved &&
+                    numParticipants - participants.length == 0 && !isReserved &&
                     <h3 className="text-red-700">Lleno</h3>
                 }
             </div>

@@ -24,7 +24,8 @@ class BookingServices {
     }
 
     finishedBooking(bookingId) {
-        return this.api.post('/finished', bookingId)
+        console.log("ENTRAMOS EN FINALIZAR EN EL SERVICE", bookingId)
+        return this.api.post(`/${bookingId}/finished`)
     }
 
     findBookingByClass({ classId }) {
