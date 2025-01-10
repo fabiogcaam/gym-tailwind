@@ -10,7 +10,10 @@ const BookingElement = ({ id, clase, status, cancelBooking }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [classData, setClassData] = useState(null)
     const [activity, setActivity] = useState("")
+    const [day, setDay] = useState(0)
+    const [activityDate, setActivityDate] = useState(null)
     const today = new Date()
+    const weekDays = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
 
     useEffect(() => {
         getClasses()
@@ -29,11 +32,17 @@ const BookingElement = ({ id, clase, status, cancelBooking }) => {
         classService.
             getClass(clase)
             .then(({ data }) => {
-                console.log(data)
+                console.log(new Date(data.dates).getDay())
                 setClassData(data)
                 getActivityOfClass(data.trainer.activity)
+                setDay(new Date(data.dates).getDay())
+                setActivityDate(new Date(data.dates).getDate())
+                console.log(day)
             })
-            .then(() => setIsLoading(false))
+            .then(() => {
+                console.log("ESTA ES LA FECHA", activityDate)
+                setIsLoading(false)
+            })
             .catch(err => console.log(err))
     }
 
@@ -61,7 +70,7 @@ const BookingElement = ({ id, clase, status, cancelBooking }) => {
     return (
         classData ?
             <div className="bg-grey-100 border border-violet p-5 mt-5 w-3/6 rounded-xl">
-                <h3>Clase de {activity} el día {classData.schedule.day} de {classData.schedule.time}</h3>
+                <h3>Clase de {activity} el {weekDays[day]} {activityDate} de {classData.schedule.time}</h3>
                 <p>Con el profesor {classData.trainer.name}</p>
                 <div className="flex justify-end">
                     {
