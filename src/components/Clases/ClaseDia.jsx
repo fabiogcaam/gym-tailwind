@@ -8,6 +8,7 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
 
     const [activity, setActivity] = useState('')
     const [isReserved, setIsReserved] = useState(false)
+    const [currentParticipants, setCurrentParticipants] = useState(participants)
     const { loggedUser } = useContext(AuthContext)
 
 
@@ -35,6 +36,7 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
             .then(() => console.log("Añadido a tus reservas"))
             .then(() => {
                 setIsReserved(true)
+                setCurrentParticipants([...currentParticipants, loggedUser._id])
             })
             .catch(err => console.log(err))
     }
@@ -45,12 +47,14 @@ const ClaseDia = ({ id, trainer, schedule, numParticipants, participants, date }
         }
     }
 
+    const availableSeats = numParticipants - currentParticipants.length
+
 
     return (
         <div className="bg-gray-100 border-violet border rounded-xl mt-5 px-5 py-5 w-[500px]">
             <h2 className="">Clase de {activity} con {trainer.name}</h2>
             <h4>Horario: {schedule.time}</h4>
-            <h5>Sitios {numParticipants - participants.length}/{numParticipants} libres</h5>
+            <h5>Sitios {availableSeats}/{numParticipants} libres</h5>
             <div className="flex justify-end">
                 {
                     !isReserved ?

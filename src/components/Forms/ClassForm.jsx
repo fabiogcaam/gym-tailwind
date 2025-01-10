@@ -4,6 +4,7 @@ import AlertForm from "./AlertForm"
 import classService from "../../services/class.services"
 import activityService from "../../services/activity.services"
 import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
 const ClassForm = () => {
@@ -15,6 +16,7 @@ const ClassForm = () => {
     const [errors, setErrors] = useState([])
     const { id } = useParams()
     const today = new Date().toISOString().split('T')[0]
+    const navigate = useNavigate()
 
     useEffect(() => {
         getActivity()
@@ -68,6 +70,7 @@ const ClassForm = () => {
                 console.log("SE HA CREADO LA CLASE", classData)
                 setIsLoading(false)
             })
+            .then(() => navigate('/'))
             .catch(err => console.log(err))
     }
 

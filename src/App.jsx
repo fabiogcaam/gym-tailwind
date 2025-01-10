@@ -10,6 +10,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute"
 import CreateActivity from "./pages/CreateActivity/CreateActivity"
 import CreateClass from "./pages/CreateClass/CreateClass"
 import CreateTrainer from "./pages/CreateTrainer/CreateTrainer"
+import NotFound from "./pages/NotFound/NotFound"
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route path='/:id/createClass' element={<CreateClass />} />
           <Route path='/createTrainer' element={<CreateTrainer />} />
         </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   )

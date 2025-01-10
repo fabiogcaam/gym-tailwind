@@ -17,7 +17,7 @@ const BookingElement = ({ id, clase, status, cancelBooking }) => {
     }, [isLoading])
 
     useEffect(() => {
-        if (status !== "Finished" && today > classData?.dates) {
+        if (status !== "Finished" && today < classData?.dates) {
             checkIfFinished()
         }
     }, [classData])
