@@ -27,7 +27,7 @@ const Activities = () => {
 
     return (
 
-        <div className="my-20 py-24 bg-gold">
+        <div className="my-20 py-24 bg-gold/70">
             <div className="flex justify-center mx-auto w-1/5 border border-violet rounded-full py-2 mb-8">
                 <h1 className="underline underline-offset-8 text-center text-xl hover:decoration-violet text-violet">Actividades</h1>
             </div>
