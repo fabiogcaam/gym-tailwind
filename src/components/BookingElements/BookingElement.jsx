@@ -14,13 +14,14 @@ const BookingElement = ({ id, clase, status, cancelBooking }) => {
     const [activityDate, setActivityDate] = useState(null)
     const today = new Date()
     const weekDays = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
+    console.log("ESTE ES EL STATUS:", today)
 
     useEffect(() => {
         getClasses()
     }, [isLoading])
 
     useEffect(() => {
-        if (status !== "Finished" && today < classData?.dates) {
+        if (status !== "Finished" && today > new Date(classData?.dates)) {
             checkIfFinished()
         }
     }, [classData])
