@@ -24,7 +24,7 @@ const BookingElement = ({ id, clase, status, cancelBooking }) => {
         if (status !== "Finished" && today > new Date(classData?.dates)) {
             checkIfFinished()
         }
-    }, [classData])
+    }, [])
 
     function getClasses() {
 
